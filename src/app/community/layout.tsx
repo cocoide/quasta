@@ -1,4 +1,5 @@
 import "styles/globals.css";
+import Header from '../../components/layout/Header'
 
 export default function RootLayout({
   children,
@@ -8,7 +9,10 @@ export default function RootLayout({
   return (
     <html>
       <head />
-      <body className="bg-[#2d2c5e]">{children}</body>
+      <body className="bg-neutral">
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
