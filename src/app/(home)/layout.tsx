@@ -10,7 +10,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html>
+    <html lang='ja'>
       <head />
       <body className="bg-neutral">
         <Header />
