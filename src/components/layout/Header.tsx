@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import { MagnifyingGlassIcon, Squares2X2Icon } from '@heroicons/react/24/outline'
+import { MagnifyingGlassIcon, Squares2X2Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 
 const Header = () => {
@@ -19,7 +19,11 @@ const Header = () => {
                     <button
                         onClick={() => setMenuOpen(!isMenuOpen)}
                         className="">
-                        <Squares2X2Icon className="h-10 w-10 text-primary" />
+                        {(!isMenuOpen) ?
+                            <Squares2X2Icon className="h-10 w-10 text-primary" />
+                            :
+                            <XMarkIcon className="h-8 w-8 mx-1 text-primary" />
+                        }
                     </button>
                 </div>
             </div>
@@ -33,7 +37,7 @@ const Header = () => {
 
                     <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">✍🏻質問・議題を作成</h2></Link>
                     <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">💭回答・議論する</h2></Link>
-                    <Link href={"/salon"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">📔サロン</h2></Link>
+                    <Link href={"/seminar"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">📚ゼミナール</h2></Link>
                     <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">🗣Quasta(クアスタ)に関するFAQ</h2></Link>
                     <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">💻設定</h2></Link>
                 </div>

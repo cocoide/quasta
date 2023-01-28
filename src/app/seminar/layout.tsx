@@ -1,5 +1,6 @@
 import "styles/globals.css";
 import Header from '../../components/layout/Header'
+import InvitedSeminar from './InvitedSeminar';
 
 export default function RootLayout({
   children,
@@ -11,7 +12,10 @@ export default function RootLayout({
       <head />
       <body className="bg-neutral">
         <Header />
-        {children}
+        <div className="flex justify-center md:mx-[5%] lg:mx-[10%]  md:pt-8 lg:pt-12 space-x-10 lg:space-x-20">
+          <div className="w-[100%]">{children}</div>
+          <InvitedSeminar />
+        </div>
       </body>
     </html>
   )
