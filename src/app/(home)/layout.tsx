@@ -14,7 +14,7 @@ export default function RootLayout({
       <head />
       <body className="bg-neutral">
         <Header />
-        <div className="flex justify-center md:mx-[5%] ">
+        <div className="flex justify-center md:mx-[5%]">
           <LeftSidevar />
           <div className="w-[100%]">{children}</div>
           <RightSidevar />
