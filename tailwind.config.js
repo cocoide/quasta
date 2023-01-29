@@ -17,12 +17,17 @@ module.exports = {
       },
       keyframes: {
         downY: {
-          "0%": { transform: "translateY(-100%)", opacity: 0 },
-          "100%": { transform: "translateY(0%) ", opacity: 1 },
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(0%) " },
+        },
+        appear: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
         },
       },
       animation: {
-        openModal: "downY 0.5s ease-out",
+        openModal: "downY 0.2s ease-out",
+        appear: "appear 0.2s ease-in-out",
       },
     },
   },
