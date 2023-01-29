@@ -20,17 +20,22 @@ module.exports = {
           "0%": { transform: "translateY(-100%)" },
           "100%": { transform: "translateY(0%) " },
         },
+        upY: {
+          "0%": { transform: "translateY(100%)" },
+          "100%": { transform: "translateY(0%) " },
+        },
         appear: {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
         },
         scale: {
-          "0%": { transform: "scale(.5)" },
+          "0%": { transform: "scale(.8)" },
           "100%": { transform: "scale(1)" },
         },
       },
       animation: {
         openModal: "downY 0.2s ease-out",
+        upModal: "upY 0.2s ease-out",
         appear: "appear 0.2s ease-in-out",
         scale: "scale 0.2s ease-in-out",
       },
