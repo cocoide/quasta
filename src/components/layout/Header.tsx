@@ -8,7 +8,7 @@ const Header = () => {
     const [isMenuOpen, setMenuOpen] = useState(false)
     const [query, setQuery] = useState("")
     return (
-        <div className="sticky top-0 z-40">
+        <div className="sticky top-0 z-30">
         <div className="flex justify-between items-center py-2 px-5  md:px-10
          bg-nothing h-18 border-b border-shadow">
 
@@ -42,7 +42,7 @@ const Header = () => {
                 <div className="">
 
                     <div className="fixed inset-x-0 top-0 flex flex-col  border-b border-shadow py-2 px-3  md:px-[15%] lg:px-[20%] bg-white/95 backdrop-blur-md
-                    divide-y divide-shadow z-30
+                    divide-y divide-shadow z-20
                 shadow-md animate-openModal">
                         <div className="flex items-center">
 
@@ -70,7 +70,7 @@ const Header = () => {
                     <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100 border-b border-shadow">💻設定</h2></Link>
                         <button className="text-primary ring-1 ring-primary rounded-xl p-1 flex items-center justify-center"><PlusCircleIcon className="h-5 w-5" />質問を作成</button>
                     </div>
-                    <button onClick={() => setMenuOpen(false)} className="bg-gray-500/30  fixed inset-0 backdrop-blur-sm z-20 animate-appear" ></button>
+                    <button onClick={() => setMenuOpen(false)} className="bg-gray-500/30  fixed inset-0 backdrop-blur-sm z-10 animate-appear" ></button>
                 </div>
             } 
         </div>
