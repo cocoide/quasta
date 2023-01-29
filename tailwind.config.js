@@ -24,10 +24,15 @@ module.exports = {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
         },
+        scale: {
+          "0%": { transform: "scale(.5)" },
+          "100%": { transform: "scale(1)" },
+        },
       },
       animation: {
         openModal: "downY 0.2s ease-out",
         appear: "appear 0.2s ease-in-out",
+        scale: "scale 0.2s ease-in-out",
       },
     },
   },

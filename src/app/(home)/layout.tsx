@@ -1,4 +1,5 @@
 import "styles/globals.css";
+import QueryModal from '../../components/features/QueryModal';
 import Header from '../../components/layout/Header';
 import LeftSidevar from './components/LeftSidevar';
 import RightSidevar from './components/RightSidevar';
@@ -19,6 +20,7 @@ export default function RootLayout({
           <div className="w-[100%]">{children}</div>
           <RightSidevar />
         </div>
+        <QueryModal />
       </body>
     </html>
   )
