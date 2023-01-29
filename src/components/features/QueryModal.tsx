@@ -39,8 +39,8 @@ const QueryModal = () => {
                 </>
                 :
                 <button onClick={async () => {
-                    await setQueryModalOpen(true)
-                    return !isQueryModalOpen && inputRef && inputRef.current?.focus()
+                    setQueryModalOpen(true)
+                    // return !isQueryModalOpen && inputRef && inputRef.current?.focus()
                 }}
                     className="fixed bottom-3 right-3 shadow-sm bg-primary  rounded-full p-2 ring-1 ring-white"><PlusIcon className="text-white h-6 w-6" /></button>
             }
