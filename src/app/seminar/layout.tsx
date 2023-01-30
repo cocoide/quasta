@@ -12,7 +12,7 @@ export default function RootLayout({
       <head />
       <body className="bg-neutral">
         <Header />
-        <div className="flex justify-center sm:mx-[5%] lg:mx-[10%]  sm:pt-5 lg:pt-8 space-x-7 lg:space-x-10">
+        <div className="flex justify-center sm:mx-[5%] lg:mx-[10%]  space-x-7 lg:space-x-10">
           <div className="w-[100%]">{children}</div>
           <InvitedSeminar />
         </div>

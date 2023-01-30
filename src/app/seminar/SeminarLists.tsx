@@ -8,7 +8,7 @@ const SeminarLists = () => {
                     <div className="justify-start flex flex-col items-center bg-nothing ring-1 ring-shadow shadow-sm rounded-md " key={i}>
                         <div className="relative ">
 
-                            <img src={s.header} width={160} height={120} alt="seminar" className="overflow-hidden w-full aspect-video rounded-t-md brightness-[75%] max-h-[150px]" />
+                            <img src={s.header} width={160} height={120} alt="seminar" className="overflow-hidden w-full aspect-video rounded-t-md  max-h-[150px]" />
 
                             <img src={s.icon} width={80} height={80} alt="seminar" className="rounded-2xl overflow-hidden aspect-square h-15 absolute  ring-4  ring-outline shadow-md shadow-outline top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3" />
 

@@ -17,10 +17,10 @@ const Header = () => {
 
             <div className="flex items-center space-x-4 md:space-x-5">
 
+                    <div className="hidden sm:flex items-center space-x-4">
                     <Link href="/seminar" className=""
                     > <AcademicCapIcon className="h-10 w-10 text-primary" />
-                    </Link>
-                    <div className="hidden md:flex items-center space-x-4">
+                        </Link>
                         <RssIcon className="h-10 w-10 text-primary" />
                         <PencilIcon className="h-10 w-10 text-primary" />
                     </div>
