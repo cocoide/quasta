@@ -9,21 +9,21 @@ const Header = () => {
     const [query, setQuery] = useState("")
     return (
         <div className="sticky top-0 z-30">
-        <div className="flex justify-between items-center py-2 px-5  md:px-10
+            <div className="flex justify-between items-center py-2 px-5  md:px-10 lg:px-20
          bg-nothing h-18 border-b border-shadow">
 
             <Link href="/" className="text-[30px] font-bold text-primary"
             >Quasta</Link>
 
             <div className="flex items-center space-x-4 md:space-x-5">
-
+                    {/*
                     <div className="hidden sm:flex items-center space-x-4">
-                    <Link href="/seminar" className=""
+                        <Link href="/community" className=""
                     > <AcademicCapIcon className="h-10 w-10 text-primary" />
                         </Link>
                         <RssIcon className="h-10 w-10 text-primary" />
                         <PencilIcon className="h-10 w-10 text-primary" />
-                    </div>
+                    </div> */}
                 <button className="text-white bg-primary font-bold p-2 rounded-md  text-base font-base"
                 >サインイン</button>
                     <button
@@ -65,7 +65,7 @@ const Header = () => {
                             <></>
                         }
                         <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">💭回答する</h2></Link>
-                    <Link href={"/seminar"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">📚ゼミナール</h2></Link>
+                        <Link href={"/community"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">📚コミュニティ</h2></Link>
                     <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">🗣Quasta(クアスタ)に関するFAQ</h2></Link>
                     <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100 border-b border-shadow">💻設定</h2></Link>
                         <button className="text-primary ring-1 ring-primary rounded-xl p-1 flex items-center justify-center"><PlusCircleIcon className="h-5 w-5" />質問を作成</button>
