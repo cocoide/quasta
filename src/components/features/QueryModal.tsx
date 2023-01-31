@@ -17,7 +17,7 @@ const QueryModal = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     return (
         <>
-            {isQueryModalOpen ?
+            {isQueryModalOpen &&
                 <>
                     <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear sm:rounded-3xl  sm:animate-scale py-10 px-5 sm:px-10 flex flex-col items-center animate-upModal duration-700">
                         <button onClick={() => { keyword.length > 3 ? setCheckModalOpen(true) : setQueryModalOpen(false), setModalEffect(true) }}
@@ -55,13 +55,7 @@ const QueryModal = () => {
                         </>
                     }
 
-                </>
-                :
-                <button onClick={async () => {
-                    setQueryModalOpen(true)
-                    // return !isQueryModalOpen && inputRef && inputRef.current?.focus()
-                }}
-                    className="md:hidden fixed bottom-3 right-3  bg-primary  rounded-full p-2 ring-1 ring-white shadow-md"><PlusIcon className="text-white h-6 w-6" /></button>
+            </>
             }
         </>
     )

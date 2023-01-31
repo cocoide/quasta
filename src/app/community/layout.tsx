@@ -9,15 +9,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html>
-      <head />
-      <body className="bg-neutral">
-        <Header />
-        <div className="flex justify-center sm:mx-[5%] lg:mx-[10%]  space-x-7 lg:space-x-10">
-          <div className="w-[100%]">{children}</div>
-          <Invitation />
-        </div>
-      </body>
-    </html>
+    <div className="flex justify-center bg-nothing">
+      <div className="w-[100%] border-x border-shadow pb-20">{children}</div>
+      {/* <Invitation /> */}
+    </div>
   )
 }

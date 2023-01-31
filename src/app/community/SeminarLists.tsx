@@ -2,19 +2,16 @@
 
 const SeminarLists = () => {
     return (
-        <div className="grid grid-cols-2 md:grid-cols-3  xl:grid-cols-4 gap-3  md:gap-4 my-3 lg:my-4 px-3 sm:px-0">
+        <div className="flex flex-col items-center justify-start">
             {seminarLists.map((s, i) => {
                 return (
-                    <div className="justify-start flex flex-col items-center bg-nothing ring-1 ring-shadow shadow-sm rounded-md" key={i}>
-                        <div className="relative ">
+                    <div className="justify-start flex items-center bg-white ring-1 ring-shadow shadow-sm  p-3 w-full" key={i}>
 
-                            <img src={s.header} width={160} height={120} alt="seminar" className="overflow-hidden w-full aspect-video rounded-t-md  max-h-[150px]" />
 
-                            <img src={s.icon} width={80} height={80} alt="seminar" className="rounded-2xl overflow-hidden aspect-square h-15 absolute  ring-4  ring-outline shadow-md shadow-outline top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3" />
+                        <img src={s.icon} width={80} height={80} alt="seminar" className="rounded-2xl aspect-square h-15  ring-4  ring-outline shadow-md shadow-outline" />
 
-                        </div>
-                        <div className="p-3">
-                            <h2 className="font-bold text-gray-700 text-sm text-center mt-3 md:mt-5"> {s.name}</h2>
+                        <div className="flex flex-col p-3 justify-center">
+                            <h2 className="font-bold text-gray-700 text-sm"> {s.name}</h2>
                             <h3 className="text-xs text-gray-500"> {s.overview}</h3>
                         </div>
                     </div>

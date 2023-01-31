@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const WelcomeSection = () => {
     return (
-        <div className="w-auto bg-white ring-1 ring-shadow rounded-2xl shadow-sm p-5 flex justify-center space-x-3 items-center m-3 md:m-5">
+        <div className="w-auto bg-white ring-1 ring-shadow rounded-xl shadow-sm p-5 flex justify-center space-x-3 items-center m-5">
             <div className=" flex flex-col space-y-2">
                 <h3 className="text-gray-600 font-bold text-[12px] md:text-base">🎉コミュニティへようこそ</h3>
                 <div className="text-[10px] text-gray-400 md:text-sm">あなたにピッタリなコミュニティを見つけよう</div>

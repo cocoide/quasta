@@ -11,7 +11,7 @@ const LeftSidevar = () => {
 
     return (
         <div className="hidden md:flex flex-col p-5 w-[220px] lg:w-[250px] justify-between  items-center h-[100%]">
-            <div className="flex flex-col  justify-center w-full space-y-5">
+            <div className="flex flex-col  justify-center w-full space-y-5 text-[18px]">
                 <Link href="/" className="text-[35px] font-bold text-primary">Questa</Link>
 
                 <Link href={"/"} className="p-2 rounded-xl hover:bg-gray-100 duration-500 text-gray-600 flex items-center mr-auto"
