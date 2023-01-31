@@ -9,14 +9,13 @@ const postLists = [
 ]
 const TimeLineView = () => {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 md:gap-2 rounded-md">
+        <div className="grid grid-cols-1  rounded-md">
             {postLists.map((p, i) => {
                 return <div className="flex flex-col space-y-2
-                p-2 bg-nothing ring-1 ring-shadow md:rounded-md" key={i}>
+                p-5 bg-nothing ring-1 ring-shadow" key={i}>
                     <div className="relative">
-                        <img src={p.thumbnail} className="aspect-video rounded-md brightness-90 w-[100%]" />
-                        <button className="absolute top-3 right-3"><BookmarkIcon className=" h-5 w-5 text-white" /></button>
-                        <button className="absolute top-3 right-10"><ShareIcon className=" h-5 w-5 text-white" /></button>
+                        <img src={p.thumbnail} className="aspect-video rounded-md brightness-90 w-[100%] " />
+                        <button className="absolute top-3 right-3"><BookmarkIcon className=" h-6 w-6 text-white" /></button>
                     </div>
                     <div className="text-bold font-base">
                         {p.subject}

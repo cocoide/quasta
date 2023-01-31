@@ -5,12 +5,10 @@ import TimeLineView from './TimeLineView'
 
 const page = () => {
     return (
-        <div className="md:m-2">
+        <div className="border-x border-shadow">
             <TimelineFilter />
             <TimeLineView />
-            <div className="md:hidden">
-                <SuggestFeed />
-            </div>
+            <SuggestFeed />
             <TimeLineView />
         </div>
     )

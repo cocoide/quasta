@@ -1,6 +1,6 @@
 import { InboxArrowDownIcon } from '@heroicons/react/24/outline'
 
-const InvitedSeminar = () => {
+const Invitation = () => {
     return (
         <div className="hidden sm:flex max-h-[200px] m-3 md:m-5
         lg:w-[280px] w-[250px] bg-white  flex-col text-gray-600 rounded-md shadow-sm relative text-center divide-y divide-shadow ring-1 ring-shadow">
@@ -12,4 +12,4 @@ const InvitedSeminar = () => {
         </div>
     )
 }
-export default InvitedSeminar
+export default Invitation

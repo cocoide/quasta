@@ -13,7 +13,7 @@ const Header = () => {
          bg-nothing h-18 border-b border-shadow">
 
             <Link href="/" className="text-[30px] font-bold text-primary"
-            >Quasta</Link>
+                >Questa</Link>
 
             <div className="flex items-center space-x-4 md:space-x-5">
                     {/*

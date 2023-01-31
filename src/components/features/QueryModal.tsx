@@ -3,11 +3,12 @@
 import { GlobeEuropeAfricaIcon, PlusCircleIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { ChangeEvent, useRef, useState } from 'react'
-import { clsx } from '../../../utils/clsx'
+import { useRecoilState } from 'recoil'
+import { queryModalAtom } from '../../model/atoms'
 
 const QueryModal = () => {
     const [modalEffect, setModalEffect] = useState(false)
-    const [isQueryModalOpen, setQueryModalOpen] = useState(false)
+    const [isQueryModalOpen, setQueryModalOpen] = useRecoilState(queryModalAtom)
     const [isCheckModalOpen, setCheckModalOpen] = useState(false)
     const [keyword, setKeyword] = useState("")
     function handleChange(e: ChangeEvent<{ value: string }>) {
@@ -18,7 +19,7 @@ const QueryModal = () => {
         <>
             {isQueryModalOpen ?
                 <>
-                    <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear sm:rounded-3xl  sm:animate-scale py-10 px-5 sm:px-10 flex flex-col items-center animate-upModal">
+                    <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear sm:rounded-3xl  sm:animate-scale py-10 px-5 sm:px-10 flex flex-col items-center animate-upModal duration-700">
                         <button onClick={() => { keyword.length > 3 ? setCheckModalOpen(true) : setQueryModalOpen(false), setModalEffect(true) }}
                             className="absolute top-5 left-5 rounded-md"><XMarkIcon className=" h-8 w-8 text-gray-400" /></button>
                         <div className="absolute  top-5  right-5 bg-primary rounded-xl shadow-sm p-2 text-bold text-white flex items-center"><PlusCircleIcon className="mr-1 h-5 w-5 text-white" />質問を投稿</div>
@@ -60,7 +61,7 @@ const QueryModal = () => {
                     setQueryModalOpen(true)
                     // return !isQueryModalOpen && inputRef && inputRef.current?.focus()
                 }}
-                    className="fixed bottom-3 right-3  bg-primary  rounded-full p-2 ring-1 ring-white shadow-md"><PlusIcon className="text-white h-6 w-6" /></button>
+                    className="md:hidden fixed bottom-3 right-3  bg-primary  rounded-full p-2 ring-1 ring-white shadow-md"><PlusIcon className="text-white h-6 w-6" /></button>
             }
         </>
     )
