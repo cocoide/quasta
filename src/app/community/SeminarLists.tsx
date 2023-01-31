@@ -5,7 +5,7 @@ const SeminarLists = () => {
         <div className="flex flex-col items-center justify-start">
             {seminarLists.map((s, i) => {
                 return (
-                    <div className="justify-start flex items-center bg-white ring-1 ring-shadow shadow-sm  p-3 w-full" key={i}>
+                    <div className="justify-start flex items-center bg-white ring-1 ring-shadow shadow-sm  p-3 w-full hover:bg-neutral duration-500" key={i}>
 
 
                         <img src={s.icon} width={80} height={80} alt="seminar" className="rounded-2xl aspect-square h-15  ring-4  ring-outline shadow-md shadow-outline" />

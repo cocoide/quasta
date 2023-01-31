@@ -1,5 +1,5 @@
 "use client"
-import { AcademicCapIcon, BellIcon, EllipsisHorizontalCircleIcon, HashtagIcon, InboxArrowDownIcon, PlusCircleIcon, RssIcon } from '@heroicons/react/24/outline'
+import { AcademicCapIcon, BellIcon, EllipsisHorizontalCircleIcon, HashtagIcon, InboxArrowDownIcon, PlusCircleIcon, RssIcon, UserIcon } from '@heroicons/react/24/outline'
 import { PencilIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { useRecoilState } from 'recoil';
@@ -32,11 +32,14 @@ const LeftSidevar = () => {
                 <Link href={"/"} className="p-2 mr-auto rounded-xl hover:bg-gray-100 duration-500 text-gray-600 flex items-center"
                 ><InboxArrowDownIcon className="h-5 w-5 mr-3" />受信箱</Link>
 
+                <Link href={"/"} className="p-2 mr-auto rounded-xl hover:bg-gray-100 duration-500 text-gray-600 flex items-center"
+                ><UserIcon className="h-5 w-5 mr-3" />プロフィール</Link>
+
             </div>
 
             <div className="w-full p-2 space-y-3">
-                <button onClick={() => setQueryOpen(true)} className="bg-primary rounded-xl p-2 w-full text-white font-bold text-[15px] flex items-center justify-center"><PlusCircleIcon className="h-5 w-5 mr-2" />質問する</button>
-                <button className="bg-white ring-1 ring-primary rounded-xl w-full p-2 text-primary font-bold text-[15px] flex items-center justify-center"><PencilIcon className="h-5 w-5 mr-2" />回答する</button>
+                <button onClick={() => setQueryOpen(true)} className="bg-primary rounded-xl p-2 w-full text-white font-bold text-[15px] flex items-center justify-center"><PlusCircleIcon className="h-5 w-5 mr-1" />質問する</button>
+                <Link href={"/answer"} className="bg-white ring-1 ring-primary rounded-xl w-full p-2 text-primary font-bold text-[15px] flex items-center justify-center"><PencilIcon className="h-5 w-5 mr-1" />回答する</Link>
             </div>
         </div>
     )

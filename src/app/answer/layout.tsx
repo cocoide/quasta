@@ -4,9 +4,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html>
-      <head />
-      <body>{children}</body>
-    </html>
+    <div className="w-full border-x border-shadow h-full">
+      {children}
+    </div>
   )
 }
