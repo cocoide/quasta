@@ -1,12 +1,18 @@
 "use client"
 import Link from 'next/link'
-import { AcademicCapIcon, BellIcon, MagnifyingGlassIcon, PencilIcon, PlusCircleIcon, RssIcon, UsersIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { useRef, useState } from 'react'
+import { MagnifyingGlassIcon, PlusCircleIcon } from '@heroicons/react/24/outline'
+import { useMemo, useRef, useState } from 'react'
+import { useAuth } from '../../../utils/hooks/useAuth'
+import { useSession } from 'next-auth/react'
 
 const Header = () => {
+    const { data: session } = useSession()
+    const user = useMemo(() => session?.user, [session])
     const inputRef = useRef<HTMLInputElement>(null);
     const [isMenuOpen, setMenuOpen] = useState(false)
     const [query, setQuery] = useState("")
+    const { signInWithGoogle, completeSignOut } = useAuth()
+    
     return (
         <div className="sticky top-0 z-30">
             <div className="flex justify-between items-center py-2 px-5  md:px-10 lg:px-20
@@ -16,16 +22,13 @@ const Header = () => {
                 >Questa</Link>
 
             <div className="flex items-center space-x-4 md:space-x-5">
-                    {/*
-                    <div className="hidden sm:flex items-center space-x-4">
-                        <Link href="/community" className=""
-                    > <AcademicCapIcon className="h-10 w-10 text-primary" />
-                        </Link>
-                        <RssIcon className="h-10 w-10 text-primary" />
-                        <PencilIcon className="h-10 w-10 text-primary" />
-                    </div> */}
-                <button className="text-white bg-primary font-bold p-2 rounded-md  text-base font-base"
-                >サインイン</button>
+
+                    {!user &&
+                        <button onClick={signInWithGoogle} className="text-white bg-primary font-bold p-2 rounded-md  text-base font-base"
+                        >サインイン</button>
+                    }
+
+
                     <button
                         onClick={async () => {
                             await setMenuOpen(!isMenuOpen)
