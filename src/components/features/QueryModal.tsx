@@ -36,7 +36,7 @@ const QueryModal = () => {
                 <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear sm:rounded-3xl  sm:animate-scale py-10 px-5 sm:px-10 flex flex-col items-center animate-upModal duration-700">
                     <button onClick={() => { keyword.length > 3 ? setCheckModalOpen(true) : setQueryModalOpen(false) }}
                             className="absolute top-5 left-5 rounded-md"><XMarkIcon className=" h-8 w-8 text-gray-400" /></button>
-                    <button onClick={() => handleSubmit(keyword)} className="absolute  top-5  right-5 bg-primary rounded-xl shadow-sm p-2 text-bold text-white flex items-center"><PlusCircleIcon className="mr-1 h-5 w-5 text-white" />質問を投稿</button>
+                    <button onClick={() => handleSubmit(keyword)} className="absolute  top-5  right-5 bg-primary rounded-xl shadow-sm p-2 text-bold text-white flex items-center"><PlusCircleIcon className="mr-1 h-5 w-5 text-white" />投稿</button>
 
                         <div className="flex items-start w-[100%] space-x-3 pt-8">
                         <Image src={user?.image as string} width={150} height={100} alt={user?.name as string} className="h-[50px] w-[50px] rounded-full bg-shadow" />
@@ -44,12 +44,12 @@ const QueryModal = () => {
                             <div className="ring-1 ring-gray-300 m-2 text-center rounded-2xl text-blue-400 flex items-center justify-center  p-1 mr-auto text-[12px] font-bold"><GlobeEuropeAfricaIcon className="w-4 h-4" /><h2>全員に公開</h2></div>
 
                             <input ref={inputRef} type="text" onChange={handleChange} value={keyword}
-                                    className="w-[100%] h-15   focus:ring-transparent ring-none border-none" placeholder="どんな質問がありますか？"></input>
+                                className="w-[100%] h-15   focus:ring-transparent ring-none border-none" placeholder="どんなことが気になりますか？"></input>
                                 <div className="border w-full border-shadow mb-5"></div>
                             </div>
                         </div>
                         <div className="bg-blue-50 rounded-xl  w-[100%] px-10 py-10 m-3 text-[15px] text-blue-400">
-                            <p className="">回答を得やすい質問のポイント</p>
+                        <p className="">回答を得やすい投稿のポイント</p>
                             <p className="">1.要点が簡潔</p>
                             <p className="">2.類似の質問がない</p>
                             <p className="">2.誤字脱字がない</p>

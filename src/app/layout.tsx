@@ -18,7 +18,7 @@ export default function RootLayout({
       <body className="">
         <NextAuthProvider>
           <RecoilProvider>
-          <div className="flex justify-center md:w-[770px] lg:w-[1000px] mx-auto relative">
+            <div className="flex justify-center md:w-[770px] lg:w-[1000px] xl:w-[1100px]  mx-auto relative">
             <div className="sticky top-0 h-screen">
               <LeftSidevar />
             </div>

@@ -38,7 +38,7 @@ const LeftSidevar = () => {
             </div>
 
             <div className="w-full p-2 space-y-3">
-                <button onClick={() => setQueryOpen(true)} className="bg-primary rounded-xl p-2 w-full text-white font-bold text-[15px] flex items-center justify-center"><PlusCircleIcon className="h-5 w-5 mr-1" />質問する</button>
+                <button onClick={() => setQueryOpen(true)} className="bg-primary rounded-xl p-2 w-full text-white font-bold text-[15px] flex items-center justify-center"><PlusCircleIcon className="h-5 w-5 mr-1" />投稿する</button>
                 <Link href={"/answer"} className="bg-white ring-1 ring-primary rounded-xl w-full p-2 text-primary font-bold text-[15px] flex items-center justify-center"><PencilIcon className="h-5 w-5 mr-1" />回答する</Link>
             </div>
         </div>
