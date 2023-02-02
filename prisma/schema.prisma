@@ -8,12 +8,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Answer{
+   id    String    @id @default(cuid())
+   answer String @unique
+   queryId String
+   authorId String
+  author  User @relation(fields: [authorId], references: [id])
+  query Question @relation(fields: [queryId], references: [query])
+  createdAt         DateTime @default(now()) @map(name: "created_at")
+  @@map(name: "answer")
+}
+
 model Question{
- id    String    @id @default(cuid())
  query String @unique
  authorId String
  author  User @relation(fields: [authorId], references: [id])
  createdAt         DateTime @default(now()) @map(name: "created_at")
+ answer Answer[]
+ @@map(name: "question")
 }
 
 model User {
@@ -27,6 +39,7 @@ model User {
   accounts Account[]
   sessions Session[]
   question Question[]
+  answer Answer[]
   @@map(name: "users")
 }
 

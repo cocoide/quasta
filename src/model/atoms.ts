@@ -9,3 +9,8 @@ export const userModalAtom=atom({
     key: "userModalAtomKey",
     default: false
 })
+
+export const answerModalAtom=atom({
+    key: "answerModalAtomKey",
+    default: false
+})
