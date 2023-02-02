@@ -5,11 +5,14 @@ import { useMemo, useRef, useState } from 'react'
 import { useAuth } from '../../../utils/hooks/useAuth'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
+import { useRecoilState } from 'recoil'
+import { userModalAtom } from '../../model/atoms'
 
 const Header = () => {
     const { data: session } = useSession()
     const inputRef = useRef<HTMLInputElement>(null);
     const [isMenuOpen, setMenuOpen] = useState(false)
+    const [isUserModalOpen, setUserModalOpen] = useRecoilState(userModalAtom)
     const [query, setQuery] = useState("")
     const { signInWithGoogle, completeSignOut } = useAuth()
     const user = session?.user
@@ -25,8 +28,8 @@ const Header = () => {
 
 
                     {user ?
-                        <button className="rounde-full">
-                            <Image src={user.image as string} width={100} height={100} alt={user.name as string} className="h-11 w-11  rounded-full" />
+                        <button onClick={() => setUserModalOpen(true)} className="rounde-full">
+                            <Image src={user.image as string} width={100} height={100} alt={user.name as string} className="h-11 w-11  rounded-full bg-shadow" />
                         </button>
                         :
                         <button onClick={signInWithGoogle} className="text-white bg-primary font-bold p-2 rounded-md  text-base font-base"
