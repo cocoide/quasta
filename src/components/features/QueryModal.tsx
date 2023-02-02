@@ -1,35 +1,49 @@
 "use client"
 
-import { GlobeEuropeAfricaIcon, PlusCircleIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { GlobeEuropeAfricaIcon, PlusCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
-import { ChangeEvent, useRef, useState } from 'react'
+import { ChangeEvent, useMemo, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { queryModalAtom } from '../../model/atoms'
+import { API_URL } from '../../libs/consts'
+import { useSession } from 'next-auth/react'
 
 const QueryModal = () => {
-    const [modalEffect, setModalEffect] = useState(false)
     const [isQueryModalOpen, setQueryModalOpen] = useRecoilState(queryModalAtom)
     const [isCheckModalOpen, setCheckModalOpen] = useState(false)
     const [keyword, setKeyword] = useState("")
+    const { data: session } = useSession()
+    const user = session?.user
+
+    const handleSubmit = async (query: string) => {
+        await fetch(`${API_URL}/question`, {
+            method: "POST",
+            body: query
+        })
+        setQueryModalOpen(false)
+        setKeyword("")
+    };
+
     function handleChange(e: ChangeEvent<{ value: string }>) {
         return setKeyword(e.target.value)
     }
     const inputRef = useRef<HTMLInputElement>(null);
+
     return (
         <>
             {isQueryModalOpen &&
                 <>
-                    <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear sm:rounded-3xl  sm:animate-scale py-10 px-5 sm:px-10 flex flex-col items-center animate-upModal duration-700">
-                        <button onClick={() => { keyword.length > 3 ? setCheckModalOpen(true) : setQueryModalOpen(false), setModalEffect(true) }}
+                <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear sm:rounded-3xl  sm:animate-scale py-10 px-5 sm:px-10 flex flex-col items-center animate-upModal duration-700">
+                    <button onClick={() => { keyword.length > 3 ? setCheckModalOpen(true) : setQueryModalOpen(false) }}
                             className="absolute top-5 left-5 rounded-md"><XMarkIcon className=" h-8 w-8 text-gray-400" /></button>
-                        <div className="absolute  top-5  right-5 bg-primary rounded-xl shadow-sm p-2 text-bold text-white flex items-center"><PlusCircleIcon className="mr-1 h-5 w-5 text-white" />質問を投稿</div>
+                    <button onClick={() => handleSubmit(keyword)} className="absolute  top-5  right-5 bg-primary rounded-xl shadow-sm p-2 text-bold text-white flex items-center"><PlusCircleIcon className="mr-1 h-5 w-5 text-white" />質問を投稿</button>
 
                         <div className="flex items-start w-[100%] space-x-3 pt-8">
-                            <Image src="/avater.png" width={150} height={100} alt="avater" className="h-[70px] w-[70px] rounded-full" />
+                        <Image src={user?.image as string} width={150} height={100} alt={user?.name as string} className="h-[50px] w-[50px] rounded-full bg-shadow" />
                             <div className="flex flex-col w-[100%] justify-center items-center">
-                                <div className="ring-1 ring-gray-300 m-2 text-center rounded-2xl text-blue-400 flex items-center justify-center  p-1 mr-auto text-[12px] font-bold"><GlobeEuropeAfricaIcon className="w-4 h-4" /><h2>全員に公開</h2></div>
+                            <div className="ring-1 ring-gray-300 m-2 text-center rounded-2xl text-blue-400 flex items-center justify-center  p-1 mr-auto text-[12px] font-bold"><GlobeEuropeAfricaIcon className="w-4 h-4" /><h2>全員に公開</h2></div>
 
-                                <input ref={inputRef} type="text" onChange={handleChange} value={keyword}
+                            <input ref={inputRef} type="text" onChange={handleChange} value={keyword}
                                     className="w-[100%] h-15   focus:ring-transparent ring-none border-none" placeholder="どんな質問がありますか？"></input>
                                 <div className="border w-full border-shadow mb-5"></div>
                             </div>
@@ -41,7 +55,7 @@ const QueryModal = () => {
                             <p className="">2.誤字脱字がない</p>
                         </div>
 
-                    </div>
+                </div>
                     <button onClick={() => { keyword.length > 3 ? setCheckModalOpen(true) : setQueryModalOpen(false) }} className="z-30 bg-gray-500/30  fixed inset-0 backdrop-blur-sm  animate-appear" ></button>
                     {isCheckModalOpen &&
                         <>

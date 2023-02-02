@@ -1,7 +1,5 @@
 import "styles/globals.css";
-import Header from '../../components/layout/Header'
-import Invitation from './Invitation';
-
+import TopBackNavi from '../../components/ui/TopBackNavi';
 
 export default function RootLayout({
   children,
@@ -9,9 +7,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex justify-center bg-nothing">
-      <div className="w-[100%] border-x border-shadow pb-20">{children}</div>
-      {/* <Invitation /> */}
+    <div className="flex flex-col bg-nothing w-[100%] border-x border-shadow">
+      <TopBackNavi pageTitle={"コミュニティ"} />
+      <div className="pb-20">{children}</div>
     </div>
   )
 }

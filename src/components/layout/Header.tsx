@@ -4,30 +4,34 @@ import { MagnifyingGlassIcon, PlusCircleIcon } from '@heroicons/react/24/outline
 import { useMemo, useRef, useState } from 'react'
 import { useAuth } from '../../../utils/hooks/useAuth'
 import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 
 const Header = () => {
     const { data: session } = useSession()
-    const user = useMemo(() => session?.user, [session])
     const inputRef = useRef<HTMLInputElement>(null);
     const [isMenuOpen, setMenuOpen] = useState(false)
     const [query, setQuery] = useState("")
     const { signInWithGoogle, completeSignOut } = useAuth()
+    const user = session?.user
     
     return (
         <div className="sticky top-0 z-30">
-            <div className="flex justify-between items-center py-2 px-5  md:px-10 lg:px-20
-         bg-nothing h-18 border-b border-shadow">
+            <div className="flex justify-between items-center py-2 px-5  bg-nothing h-18 border-b border-shadow">
 
             <Link href="/" className="text-[30px] font-bold text-primary"
                 >Questa</Link>
 
             <div className="flex items-center space-x-4 md:space-x-5">
 
-                    {!user &&
+
+                    {user ?
+                        <button className="rounde-full">
+                            <Image src={user.image as string} width={100} height={100} alt={user.name as string} className="h-11 w-11  rounded-full" />
+                        </button>
+                        :
                         <button onClick={signInWithGoogle} className="text-white bg-primary font-bold p-2 rounded-md  text-base font-base"
                         >サインイン</button>
                     }
-
 
                     <button
                         onClick={async () => {
