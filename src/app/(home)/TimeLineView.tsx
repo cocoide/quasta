@@ -9,7 +9,7 @@ const postLists = [
 ]
 const TimeLineView = () => {
     return (
-        <div className="grid grid-cols-1  rounded-md">
+        <div className="rounded-md">
             {postLists.map((p, i) => {
                 return <div className="flex flex-col space-y-2
                 p-5 bg-nothing ring-1 ring-shadow" key={i}>

@@ -75,8 +75,7 @@ const Header = () => {
                         <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">💭回答する</h2></Link>
                         <Link href={"/community"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">📚コミュニティ</h2></Link>
                     <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">🗣Quasta(クアスタ)に関するFAQ</h2></Link>
-                    <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100 border-b border-shadow">💻設定</h2></Link>
-                        <button className="text-primary ring-1 ring-primary rounded-xl p-1 flex items-center justify-center"><PlusCircleIcon className="h-5 w-5" />質問を作成</button>
+                        <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100 border-b border-shadow">💻設定</h2></Link>
                     </div>
                     <button onClick={() => setMenuOpen(false)} className="bg-gray-500/30  fixed inset-0 backdrop-blur-sm z-10 animate-appear" ></button>
                 </div>

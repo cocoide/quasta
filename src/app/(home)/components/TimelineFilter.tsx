@@ -7,7 +7,6 @@ const TimelineFilter = () => {
                 <button className="flex items-center p-1 bg-white text-gray-500 ring-outline ring-1 rounded-md"
                 > <ChevronDownIcon className="h-4 w-4" />最新順</button>
 
-                <button className="py-1 px-2 bg-shadow text-gray-500 rounded-md">#勉強法</button>
             </div>
             <button className="flex items-center p-1 rounded-md bg-outline text-white font-bold shadow-sm"><AdjustmentsHorizontalIcon className="h-5 w-5" />トピック</button>
 
