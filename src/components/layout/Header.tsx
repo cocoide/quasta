@@ -13,9 +13,7 @@ const Header = () => {
     const [isMenuOpen, setMenuOpen] = useState(false)
     const [isUserModalOpen, setUserModalOpen] = useRecoilState(userModalAtom)
     const [query, setQuery] = useState("")
-    const { signInWithGoogle, completeSignOut } = useAuth()
-    const { data: session } = useSession()
-    const user = session?.user
+    const { signInWithGoogle, user } = useAuth()
     
     return (
         <div className="sticky top-0 z-30">

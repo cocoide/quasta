@@ -7,6 +7,8 @@ import { ChangeEvent, useRef, useState } from 'react';
 import useAutosizeTextArea from '../../../utils/hooks/useAutosizeTextArea';
 
 const AnswerModal = () => {
+
+
     const [isModalOpen, setModalOpen] = useRecoilState(answerModalAtom);
     const [isSelectQuery, setSelectQuery] = useRecoilState(selectQueryAtom)
     const [answerText, setAnswerText] = useState("")
@@ -26,6 +28,7 @@ const AnswerModal = () => {
     };
 
     async function postAnswer() {
+
         if (answerText.length > 5) {
             await fetch(`${API_URL}/answer/${isSelectQuery}`, {
                 method: "POST",
@@ -33,7 +36,7 @@ const AnswerModal = () => {
             })
             setSelectQuery("")
             setAnswerText("")
-            setModalOpen(false)
+            return setModalOpen(false)
         }
     };
 

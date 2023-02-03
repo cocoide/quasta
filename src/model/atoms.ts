@@ -19,3 +19,8 @@ export const selectQueryAtom=atom({
     key: "selectQueryAtomKey",
     default: ""
 })
+
+export const loginModalAtom=atom({
+    key: "loginModalAtomKey",
+    default: false
+})

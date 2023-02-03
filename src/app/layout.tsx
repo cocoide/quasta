@@ -1,5 +1,6 @@
 import "styles/globals.css";
 import QueryModal from '../components/features/QueryModal';
+import LoginModal from '../components/layout/LoginModal';
 import Navigation from '../components/layout/Navigation';
 import NextAuthProvider from '../components/layout/providers/NextAuthProvider';
 import { RecoilProvider } from '../components/layout/providers/RecoilProvider';
@@ -26,6 +27,7 @@ export default function RootLayout({
             <RightSidevar />
           </div>
           <QueryModal />
+            <LoginModal />
           <Navigation />
         </RecoilProvider>
         </NextAuthProvider>

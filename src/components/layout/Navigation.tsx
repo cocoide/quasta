@@ -2,11 +2,14 @@
 import { AcademicCapIcon, BellIcon, HomeIcon, PencilIcon, PlusCircleIcon } from '@heroicons/react/24/outline'
 import { RssIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link'
-import { useRecoilState } from 'recoil';
-import { queryModalAtom } from '../../model/atoms';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useAuth } from '../../../utils/hooks/useAuth';
+import { loginModalAtom, queryModalAtom } from '../../model/atoms';
 
 const Navigation = () => {
+    const { user } = useAuth()
     const [isQueryModalOpen, setQueryModalOpen] = useRecoilState(queryModalAtom)
+    const setLoginModalOpen = useSetRecoilState(loginModalAtom)
     return (
         <div className="flex items-center justify-center  bg-nothing h-15 w-full 
             fixed bottom-0 py-1 space-x-8 md:hidden text-gray-400 border-t border-neutral">
@@ -18,7 +21,12 @@ const Navigation = () => {
                 <RssIcon className="h-6 hover:scale-105 duration-200" />
                 <h3 className="text-[8px]">フォロー</h3>
             </Link>
-            <button onClick={() => setQueryModalOpen(true)} className="">
+            <button onClick={() => {
+                if (user == null) {
+                    return setLoginModalOpen(true)
+                };
+                setQueryModalOpen(true)
+            }} className="">
                 <PlusCircleIcon className="h-10 hover:scale-105 duration-200" />
             </button>
             <Link href={"/community"} className="flex flex-col items-center">

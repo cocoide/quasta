@@ -1,4 +1,3 @@
-import { PencilIcon } from '@heroicons/react/24/solid'
 import { cache } from 'react'
 import { db } from '../../libs/prisma'
 import AnswerButton from './AnswerButton';

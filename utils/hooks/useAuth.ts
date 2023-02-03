@@ -1,4 +1,4 @@
-import { signIn, signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const useAuth =()=>{
 
@@ -7,11 +7,9 @@ const useAuth =()=>{
             callbackUrl: window.location.href,
           });
         };
-        const completeSignOut = async() => {
-            await signOut({
-              callbackUrl: window.location.href,
-            })
-        }
-return { signInWithGoogle, completeSignOut }
+        const { data: session,status } = useSession()
+        const user = session?.user
+        
+return { signInWithGoogle,session, user, status }
 };
 export  {useAuth};
