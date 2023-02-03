@@ -7,6 +7,7 @@ import { useRecoilState } from 'recoil'
 import { queryModalAtom } from '../../model/atoms'
 import { API_URL } from '../../libs/consts'
 import { useSession } from 'next-auth/react'
+import useAutosizeTextArea from '../../../utils/hooks/useAutosizeTextArea';
 
 const QueryModal = () => {
     const [isQueryModalOpen, setQueryModalOpen] = useRecoilState(queryModalAtom)
@@ -14,6 +15,12 @@ const QueryModal = () => {
     const [keyword, setKeyword] = useState("")
     const { data: session } = useSession()
     const user = session?.user
+
+    const [value, setValue] = useState("");
+    const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+    useAutosizeTextArea(textAreaRef.current, value);
+
 
     const handleSubmit = async (query: string) => {
         await fetch(`${API_URL}/question`, {
@@ -24,8 +31,10 @@ const QueryModal = () => {
         setKeyword("")
     };
 
-    function handleChange(e: ChangeEvent<{ value: string }>) {
-        return setKeyword(e.target.value)
+    function handleChange(e: ChangeEvent<HTMLTextAreaElement>) {
+        setKeyword(e.target.value)
+        const val = e.target?.value;
+        setValue(val);
     }
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -43,8 +52,8 @@ const QueryModal = () => {
                             <div className="flex flex-col w-[100%] justify-center items-center">
                             <div className="ring-1 ring-gray-300 m-2 text-center rounded-2xl text-blue-400 flex items-center justify-center  p-1 mr-auto text-[12px] font-bold"><GlobeEuropeAfricaIcon className="w-4 h-4" /><h2>全員に公開</h2></div>
 
-                            <input ref={inputRef} type="text" onChange={handleChange} value={keyword}
-                                className="w-[100%] h-15   focus:ring-transparent ring-none border-none" placeholder="どんなことが気になりますか？"></input>
+                            <textarea ref={textAreaRef} onChange={handleChange} value={keyword} rows={1}
+                                className="w-[100%] min-h-auto   focus:ring-transparent ring-none border-none resize-none min-h-15" placeholder="どんなことが気になりますか？"></textarea>
                                 <div className="border w-full border-shadow mb-5"></div>
                             </div>
                         </div>

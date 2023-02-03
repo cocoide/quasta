@@ -16,7 +16,7 @@ const page = async () => {
             {questions.map((q, i) => {
                 return <div className="p-5 border-b border-shadow flex flex-col justify-center space-y-2 hover:bg-neutral duration-500" key={i}>
                     <div className="text-[17px] font-bold">{q.query}</div>
-                    <AnswerButton />
+                    <AnswerButton query={q.query} />
                 </div>
             })}
         </div>

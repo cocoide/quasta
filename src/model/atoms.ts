@@ -14,3 +14,8 @@ export const answerModalAtom=atom({
     key: "answerModalAtomKey",
     default: false
 })
+
+export const selectQueryAtom=atom({
+    key: "selectQueryAtomKey",
+    default: ""
+})
