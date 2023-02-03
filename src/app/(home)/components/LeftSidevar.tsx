@@ -1,6 +1,7 @@
 "use client"
-import { AcademicCapIcon, BellIcon, EllipsisHorizontalCircleIcon, HashtagIcon, InboxArrowDownIcon, PlusCircleIcon, RssIcon, UserIcon } from '@heroicons/react/24/outline'
-import { PencilIcon } from '@heroicons/react/24/solid'
+import { AcademicCapIcon, BellIcon, EllipsisHorizontalCircleIcon, EllipsisHorizontalIcon, HashtagIcon, InboxArrowDownIcon, PencilIcon, PlusCircleIcon, RssIcon, UserIcon } from '@heroicons/react/24/outline'
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 import Link from 'next/link'
 import { useRecoilState } from 'recoil';
 import { queryModalAtom } from '../../../model/atoms';
@@ -8,10 +9,12 @@ import { queryModalAtom } from '../../../model/atoms';
 
 const LeftSidevar = () => {
     const [isQueryOpen, setQueryOpen] = useRecoilState(queryModalAtom)
+    const { data: session } = useSession()
+    const user = session?.user
 
     return (
         <div className="hidden md:flex flex-col p-5 w-[220px] lg:w-[250px] justify-between  items-center h-[100%]">
-            <div className="flex flex-col  justify-center w-full space-y-5 text-[18px]">
+            <div className="flex flex-col  justify-center w-full space-y-4 text-[18px]">
                 <Link href="/" className="text-[35px] font-bold text-primary">Questa</Link>
 
                 <Link href={"/"} className="p-2 rounded-xl hover:bg-gray-100 duration-500 text-gray-600 flex items-center mr-auto"
@@ -32,14 +35,25 @@ const LeftSidevar = () => {
                 <Link href={"/"} className="p-2 mr-auto rounded-xl hover:bg-gray-100 duration-500 text-gray-600 flex items-center"
                 ><InboxArrowDownIcon className="h-5 w-5 mr-3" />受信箱</Link>
 
-                <Link href={"/"} className="p-2 mr-auto rounded-xl hover:bg-gray-100 duration-500 text-gray-600 flex items-center"
-                ><UserIcon className="h-5 w-5 mr-3" />プロフィール</Link>
+                <Link href={"/answer"} className="p-2 mr-auto rounded-xl hover:bg-gray-100 duration-500 text-gray-600 flex items-center"
+                ><PencilIcon className="h-5 w-5 mr-3" />回答する</Link>
 
             </div>
 
             <div className="w-full p-2 space-y-3">
                 <button onClick={() => setQueryOpen(true)} className="bg-primary rounded-xl p-2 w-full text-white font-bold text-[15px] flex items-center justify-center"><PlusCircleIcon className="h-5 w-5 mr-1" />投稿する</button>
-                <Link href={"/answer"} className="bg-white ring-1 ring-primary rounded-xl w-full p-2 text-primary font-bold text-[15px] flex items-center justify-center"><PencilIcon className="h-5 w-5 mr-1" />回答する</Link>
+                {session &&
+                    <Link href={"/"} className="rounded-full  p-1 flex items-center justify-between hover:bg-neutral">
+                        <div className="flex items-center space-x-3">
+                            <Image src={user?.image as string} width={100} height={100} alt={user?.name as string} className="h-9 w-9  rounded-full bg-shadow" />
+                            <div className="flex flex-col">
+                                <div className="text-gray-700 text-[13px] font-bold"> {user?.name}</div>
+                                <div className="text-gray-500 text-[12px]">@{user?.id}</div>
+                            </div>
+                        </div>
+                        <button className=""><EllipsisHorizontalIcon className="h-5 w-5" /> </button>
+                    </Link>
+                }
             </div>
         </div>
     )

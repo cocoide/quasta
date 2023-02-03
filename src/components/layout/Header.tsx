@@ -9,12 +9,12 @@ import { useRecoilState } from 'recoil'
 import { userModalAtom } from '../../model/atoms'
 
 const Header = () => {
-    const { data: session } = useSession()
     const inputRef = useRef<HTMLInputElement>(null);
     const [isMenuOpen, setMenuOpen] = useState(false)
     const [isUserModalOpen, setUserModalOpen] = useRecoilState(userModalAtom)
     const [query, setQuery] = useState("")
     const { signInWithGoogle, completeSignOut } = useAuth()
+    const { data: session } = useSession()
     const user = session?.user
     
     return (

@@ -1,35 +1,27 @@
 "use client"
 import { XMarkIcon, PlusCircleIcon } from '@heroicons/react/24/outline';
-import { ChangeEvent, useRef, useState } from 'react';
-import { AtomOptions, useRecoilState } from 'recoil';
-import useAutosizeTextArea from '../../../../utils/hooks/useAutosizeTextArea';
+import { ChangeEvent, RefObject } from 'react';
 import { ReactNode } from 'react';
 
 type ModalView = {
     closeFunction: () => void
     postFunction: () => void
+    handleChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
     isModalOpen: boolean
-    children?: ReactNode
+    inputText: string
     postAction: string
-    placeholder?: string
+    placeholder?: string,
+    textAreaRef?: RefObject<HTMLTextAreaElement>
+    children?: ReactNode
 }
-const CreateView = ({ closeFunction, postFunction, isModalOpen, children, postAction, placeholder }: ModalView) => {
-
-    const textAreaRef = useRef<HTMLTextAreaElement>(null);
-    const [textAreaValue, setTextAreaValue] = useState("");
-    useAutosizeTextArea(textAreaRef?.current, textAreaValue);
-
-    function handleChange(e: ChangeEvent<HTMLTextAreaElement>) {
-        const value = e.target?.value;
-        setTextAreaValue(value);
-    }
+const CreateView = ({ closeFunction, postFunction, handleChange, isModalOpen, children, postAction, placeholder, inputText, textAreaRef }: ModalView) => {
 
     return (
         <>
             {isModalOpen &&
                 <>
                     {/* background shadow */}
-                    <button onClick={closeFunction} className="z-30 bg-gray-500/30  fixed inset-0 backdrop-blur-sm  animate-appear" />
+                <button onClick={closeFunction} className="z-30 bg-gray-500/30  fixed inset-0 backdrop-blur-sm  animate-appear" />
 
                     {/* modal content */}
                     <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear sm:rounded-3xl  
@@ -47,7 +39,7 @@ items-center animate-upModal duration-700">
 
                             <textarea ref={textAreaRef} onChange={handleChange} rows={1}
                                 className="w-[100%] min-h-auto   focus:ring-transparent ring-none border-none resize-none min-h-15"
-                                placeholder={placeholder}></textarea>
+                            placeholder={placeholder} value={inputText}></textarea>
                             <div className="border w-full border-shadow mb-5"></div>
                         </div>
                     </div>
