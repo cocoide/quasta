@@ -12,8 +12,8 @@ const Navigation = () => {
     const setLoginModalOpen = useSetRecoilState(loginModalAtom)
     const router = useRouter()
     return (
-        <div className="flex items-center justify-center  bg-nothing h-10 w-full 
-            fixed bottom-0 py-1 space-x-8 md:hidden text-gray-500 border-t border-neutral shadow-md">
+        <div className="flex items-center justify-center  bg-nothing h-12 w-full 
+            fixed bottom-0 py-2 space-x-8 md:hidden text-gray-500 border-t border-neutral shadow-md">
             <Link href={"/"} className="flex flex-col items-center p-1">
                 <HomeIcon className="h-8 hover:scale-105 duration-200" />
                 {/* <h3 className="text-[10px]">ホーム</h3> */}

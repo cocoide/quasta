@@ -6,7 +6,7 @@ import { seminarLists } from '../community/SeminarLists'
 const SuggestFeed = () => {
     return (
         <div className="flex flex-col bg-white ring-1 ring-shadow shadow-sm p-3 space-y-2">
-            <div className="text-center font-bold text-gray-600 text-[15px]">あなたにおすすめ</div>
+            <div className="text-center font-bold text-gray-600 text-[15px]">コミュニティ</div>
             {seminarLists.slice(0, 3).map((s, i) => {
                 return (
                     <div key={i} className="flex justify-between items-center">

@@ -13,7 +13,7 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
     const { user } = useAuth()
     return (
         <div>
-            <div className="flex flex-col justify-center items-start p-2 space-y-2">
+            <div className="flex flex-col justify-center items-start p-4 space-y-2">
                 <div className="flex flex-row items-center  justify-between space-x-2 w-full">
                     <div className="flex flex-row items-center space-x-3">
                         <Image src={answer.author.image as string} width={70} height={70} alt={answer.author.name as string} className="h-[35px] w-[35px] rounded-full bg-shadow" />

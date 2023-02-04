@@ -21,6 +21,7 @@ const FavoriteButton = ({ answerId, favorite_users }: FavoriteButtonType) => {
     const { user } = useAuth()
     const { trigger } = useMutation(`${API_URL}/answer`, answerFetcher);
 
+
     async function handleClick(answerId: string) {
         if (checkAnswerIsLike(favorite_users, user?.id as string)) {
             return handleUnFavorite(answerId)
