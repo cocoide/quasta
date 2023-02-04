@@ -1,4 +1,5 @@
-import GlobalLoading from '../../components/ui/loading/GlobalLoading';
+import GlobalLoading from '../../../components/ui/loading/GlobalLoading'
+
 
 const loading = () => {
     return (
