@@ -1,4 +1,4 @@
-import { FavoriteUserType } from '../src/model/type';
+import { FavoriteUserType } from '../src/model/types';
 
 
 export const checkAnswerIsLike = (

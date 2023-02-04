@@ -43,7 +43,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                     }
                 }
             })
-            return res.status(201).json({succes: "Favorite answer"})
+            return res.status(201).json({succes: "Unfavorite answer"})
         } catch (e) {
             return res.status(500).json({error: "Server Error Happened"});
         }

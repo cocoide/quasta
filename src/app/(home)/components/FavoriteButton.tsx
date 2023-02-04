@@ -4,9 +4,11 @@ import { useRouter } from 'next/navigation';
 import { checkAnswerIsLike } from '../../../../utils/check';
 import { useAuth } from '../../../../utils/hooks/useAuth';
 import { API_URL } from '../../../libs/consts';
-import { FavoriteUserType } from '../../../model/type';
 import { HandThumbUpIcon } from '@heroicons/react/24/outline';
 import { clsx } from '../../../../utils/clsx';
+import { FavoriteUserType } from '../../../model/types';
+import useMutation from "swr/mutation";
+import { answerFetcher } from '../../../../utils/fetcher';
 
 type FavoriteButtonType = {
     answerId: string,
@@ -17,6 +19,7 @@ type FavoriteButtonType = {
 const FavoriteButton = ({ answerId, favorite_users }: FavoriteButtonType) => {
     const router = useRouter()
     const { user } = useAuth()
+    const { trigger } = useMutation(`${API_URL}/answer`, answerFetcher);
 
     async function handleClick(answerId: string) {
         if (checkAnswerIsLike(favorite_users, user?.id as string)) {
@@ -29,6 +32,7 @@ const FavoriteButton = ({ answerId, favorite_users }: FavoriteButtonType) => {
         await fetch(`${API_URL}/answer/favorite/${answerId}`, {
             method: "PATCH",
         })
+        trigger()
         router.refresh()
     };
 
@@ -36,11 +40,12 @@ const FavoriteButton = ({ answerId, favorite_users }: FavoriteButtonType) => {
         await fetch(`${API_URL}/answer/favorite/${answerId}`, {
             method: "DELETE",
         })
+        trigger()
         router.refresh()
     };
 
     return (
-        <button onClick={() => handleClick(answerId)} className="flex items-center">
+        <button onClick={async () => handleClick(answerId)} className="flex items-center">
             {checkAnswerIsLike(favorite_users, user?.id as string) ?
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#ffa0b5" className="w-6 h-6 pl-1">

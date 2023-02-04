@@ -1,13 +1,22 @@
 import Header from '../../components/layout/Header'
-import TimelineFilter from './components/TimelineFilter'
 import SuggestFeed from './SuggestFeed'
 import TimeLineView from './TimeLineView'
 import UserModal from '../../components/features/UserModal';
 import AnswerLists from './AnswerLists';
+import { API_URL } from '../../libs/consts';
+import { FetchAnswerType } from '../../model/types';
 
-export const revalidate = 300
+export const dynamic = "force-dynamic";
 
-const page = async () => {
+const getAnswers = async (): Promise<FetchAnswerType[]> => {
+    const res = await fetch(`${API_URL}/answer`, {
+        method: "GET", cache: 'no-store'
+    },)
+    return res.json()
+};
+const HomePage = async () => {
+    const anwers = await getAnswers()
+
     return (
         <>
             <div className="md:hidden">
@@ -15,12 +24,11 @@ const page = async () => {
                 <Header />
             </div>
             <div className="border-x border-shadow">
-                {/* @ts-expect-error Server Component  */}
-                <AnswerLists />
+                <AnswerLists initialData={anwers} />
             <SuggestFeed />
             <TimeLineView />
         </div>
         </>
     )
 }
-export default page
+export default HomePage

@@ -24,8 +24,3 @@ export const loginModalAtom=atom({
     key: "loginModalAtomKey",
     default: false
 })
-
-export const commentShowAtom=atom({
-    key: "commentShowAtomKey",
-    default: false
-})
