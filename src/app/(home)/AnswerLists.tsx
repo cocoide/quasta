@@ -2,7 +2,8 @@ import { ArrowPathIcon, ChatBubbleOvalLeftIcon, GiftIcon, HandThumbDownIcon, Han
 import Image from 'next/image'
 import { cache } from 'react'
 import { db } from '../../libs/prisma'
-
+import { FavoriteUserType } from '../../model/type'
+import FavoriteButton from './components/FavoriteButton'
 
 const AnswerLists = async () => {
     const answers = await fetchAnswers()
@@ -27,11 +28,15 @@ const AnswerLists = async () => {
                         <div className="px-2 text-[17px] text-gray-700" >{a.answer}</div>
                         <div className="flex flex-row items-center space-x-12  text-gray-400 px-2 w-full">
                             <div className="flex items-center bg-neutral rounded-3xl divide-x divide-gray-300">
-                                <HandThumbUpIcon className="h-7 w-7 px-1" /><HandThumbDownIcon className="h-7 w-7 px-1" />
+                                <FavoriteButton
+                                    answerId={a.id}
+                                    favorite_users={a.favoritedBy as FavoriteUserType[]} />
+                                <HandThumbDownIcon className="h-7 w-7 px-1" />
                             </div>
                             <ArrowPathIcon className="w-5 h-5" />
                             <ChatBubbleOvalLeftIcon className="w-5 h-5" />
                             <GiftIcon className="w-5 h-5" />
+
                         </div>
                     </div>
                 )
@@ -47,8 +52,16 @@ const fetchAnswers = cache(async () => {
         orderBy: {
             createdAt: "desc"
         },
+
         select: {
+            id: true,
             answer: true,
+            favoritedBy: {
+                select: {
+                    id: true,
+                    name: true,
+                }
+            },
             query: {
                 select: {
                     query: true
@@ -60,6 +73,11 @@ const fetchAnswers = cache(async () => {
                     name: true,
                     image: true,
                 }
+            },
+            _count: {
+                select: {
+                    favoritedBy: true
+                },
             },
         },
     })

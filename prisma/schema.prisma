@@ -8,11 +8,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Comment{
+  id   String    @id @default(cuid())
+  comment String
+  authorId String
+  answerId String?
+  answer Answer? @relation(fields: [answerId], references: [id])
+  author User @relation(fields: [authorId], references: [id])
+  createdAt         DateTime @default(now()) @map(name: "created_at")
+  favoritedBy User[] @relation("FavoriteCommnet")
+  @@map(name: "comment")
+}
+
 model Answer{
    id    String    @id @default(cuid())
    answer String @unique
    queryId String
    authorId String
+   comments Comment[]
+   favoritedBy User[] @relation("FavoriteAnswer")
   author  User @relation(fields: [authorId], references: [id])
   query Question @relation(fields: [queryId], references: [query])
   createdAt         DateTime @default(now()) @map(name: "created_at")
@@ -39,7 +53,10 @@ model User {
   accounts Account[]
   sessions Session[]
   question Question[]
-  answer Answer[]
+  answer Answer[]  
+  comments Comment[]
+  favorite_answers Answer[] @relation("FavoriteAnswer")
+  favorite_comments Comment[] @relation("FavoriteCommnet")
   @@map(name: "users")
 }
 

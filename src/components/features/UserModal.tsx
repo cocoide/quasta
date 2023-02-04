@@ -1,7 +1,8 @@
 "use client"
-import { InboxArrowDownIcon, PencilIcon, BellIcon, UserMinusIcon } from '@heroicons/react/24/outline';
+import { InboxArrowDownIcon, PencilIcon, BellIcon, UserMinusIcon, EllipsisHorizontalIcon, EllipsisHorizontalCircleIcon } from '@heroicons/react/24/outline';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { clsx } from '../../../utils/clsx';
@@ -32,19 +33,18 @@ const UserModal = () => {
                         isCloseStyle ? "animate-slideOut" : "animate-slideIn")}>
 
 
-                    <div className="w-full min-h-screen p-10 flex justify-between flex-col items-center">
+                    <div className="w-full min-h-screen p-12 flex justify-between flex-col items-center">
 
-                            <div className="">
+                        <div className="w-full flex flex-col  items-center justify-center">
                                 <div className="mb-3 text-center text-xl">{user?.name}</div>
                                 <Image src={user?.image as string} width={150} height={100} alt={user?.name as string} className="h-[100px] w-[100px] rounded-full bg-shadow" />
                             </div>
                         {/* <div className=" ring-1 ring-shadow rounded-2xl shadow-sm aspect-square w-full"></div> */}
 
-                            <div className="flex justify-start flex-col items-center space-y-5">
-                                <div className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full text-center flex items-center justify-center"><InboxArrowDownIcon className='h-4 w-4' />受信箱</div>
-                                <div className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full text-center flex items-center justify-center"><BellIcon className='h-4 w-4' />通知</div>
-                                <div className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full text-center flex items-center justify-center"><PencilIcon className='h-4 w-4' />プロフィール編集</div>
-                            <button onClick={() => signOut()} className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full text-center flex items-center justify-center"><UserMinusIcon className='h-4 w-4' />ログアウト</button>
+                        <div className="flex justify-start flex-col items-center space-y-3 w-full text-gray-500">
+                            <div className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full flex items-center"><PencilIcon className='h-4 w-4 mx-3' />プロフィール編集</div>
+                            <Link href={"/setting"} className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full flex items-center"><EllipsisHorizontalCircleIcon className='h-4 w-4 mx-3' />設定</Link>
+                            <button onClick={() => signOut()} className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full text-center flex items-center"><UserMinusIcon className='h-4 w-4 mx-3' />サインアウト</button>
                             </div>
 
                         </div>
