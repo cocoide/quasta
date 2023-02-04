@@ -16,7 +16,7 @@ const Header = () => {
     const { signInWithGoogle, user } = useAuth()
     
     return (
-        <div className="sticky top-0 z-30">
+        <div className="sticky top-0 z-30 w-screen">
             <div className="flex justify-between items-center py-2 px-5  bg-nothing h-18 border-b border-shadow">
 
             <Link href="/" className="text-[30px] font-bold text-primary"

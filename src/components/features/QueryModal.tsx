@@ -42,7 +42,8 @@ const QueryModal = () => {
         <>
             {isQueryModalOpen &&
                 <>
-                <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear sm:rounded-3xl  sm:animate-scale py-10 px-5 sm:px-10 flex flex-col items-center animate-upModal duration-700">
+                <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear sm:rounded-3xl  sm:animate-scale py-10 px-5 sm:px-10 flex flex-col items-center animate-upModal duration-700
+                mt-[150px] rounded-t-3xl">
                     <button onClick={() => { keyword.length > 3 ? setCheckModalOpen(true) : setQueryModalOpen(false) }}
                             className="absolute top-5 left-5 rounded-md"><XMarkIcon className=" h-8 w-8 text-gray-400" /></button>
                     <button onClick={() => handleSubmit(keyword)} className="absolute  top-5  right-5 bg-primary rounded-xl shadow-sm p-2 text-bold text-white flex items-center"><PlusCircleIcon className="mr-1 h-5 w-5 text-white" />投稿する</button>

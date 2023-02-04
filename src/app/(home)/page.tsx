@@ -14,8 +14,7 @@ const page = async () => {
                 <UserModal />
                 <Header />
             </div>
-        <div className="border-x border-shadow">
-            <TimelineFilter />
+            <div className="border-x border-shadow">
                 {/* @ts-expect-error Server Component  */}
                 <AnswerLists />
             <SuggestFeed />

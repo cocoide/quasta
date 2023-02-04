@@ -27,11 +27,11 @@ const AnswerLists = async () => {
                         <div className="px-2 text-[17px] text-gray-700" >{a.answer}</div>
                         <div className="flex flex-row items-center space-x-12  text-gray-400 px-2 w-full">
                             <div className="flex items-center bg-neutral rounded-3xl divide-x divide-gray-300">
-                                <HandThumbUpIcon className="h-6 w-6 px-1" /><HandThumbDownIcon className="h-6 w-6 px-1" />
+                                <HandThumbUpIcon className="h-7 w-7 px-1" /><HandThumbDownIcon className="h-7 w-7 px-1" />
                             </div>
-                            <ArrowPathIcon className="h-4 w-4" />
-                            <ChatBubbleOvalLeftIcon className="h-4 w-4" />
-                            <GiftIcon className="h-4 w-4" />
+                            <ArrowPathIcon className="w-5 h-5" />
+                            <ChatBubbleOvalLeftIcon className="w-5 h-5" />
+                            <GiftIcon className="w-5 h-5" />
                         </div>
                     </div>
                 )

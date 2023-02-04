@@ -24,8 +24,8 @@ const CreateView = ({ closeFunction, postFunction, handleChange, isModalOpen, ch
                 <button onClick={closeFunction} className="z-30 bg-gray-500/30  fixed inset-0 backdrop-blur-sm  animate-appear" />
 
                     {/* modal content */}
-                    <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear sm:rounded-3xl  
-sm:animate-scale py-10 px-5 sm:px-10 flex flex-col 
+                <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear rounded-t-3xl sm:rounded-3xl  
+sm:animate-scale py-10 px-5 sm:px-10 flex flex-col  mt-[150px] 
 items-center animate-upModal duration-700">
                         <button onClick={closeFunction}
                             className="absolute top-5 left-5 rounded-md"
