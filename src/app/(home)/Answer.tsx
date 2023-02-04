@@ -1,15 +1,15 @@
 "use client"
 import Image from 'next/image'
 import { FavoriteUserType, FetchAnswerType, } from '../../model/types'
-import { ArrowPathIcon, ChatBubbleOvalLeftIcon, GiftIcon, HandThumbDownIcon, HandThumbUpIcon, PlusCircleIcon } from '@heroicons/react/24/outline'
+import { ArrowPathIcon, ChatBubbleOvalLeftIcon, GiftIcon, HandThumbDownIcon, PlusCircleIcon } from '@heroicons/react/24/outline'
 import FavoriteButton from './components/FavoriteButton'
 import { useState } from 'react'
-import CommentsView from './components/CommentsView'
 import { useAuth } from '../../../utils/hooks/useAuth'
+import ViewComments from './components/ViewComments';
 
 
 const Answer = ({ answer }: { answer: FetchAnswerType }) => {
-    const [showComment, setShowComment] = useState(false)
+    const [commentOpen, setCommentOpen] = useState(false)
     const { user } = useAuth()
     return (
         <div>
@@ -38,16 +38,17 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
                     <ArrowPathIcon className="w-5 h-5" />
                     <button onClick={() => {
                         if (user) {
-                            return setShowComment(true)
+                            return setCommentOpen(!commentOpen)
                         }
                     }}
                         className="flex items-center">
-                        <ChatBubbleOvalLeftIcon className="w-5 h-5" />
+                        <ChatBubbleOvalLeftIcon className="w-5 h-5" />{answer._count.comments > 0 && answer._count.comments}
                     </button>
                     <GiftIcon className="w-5 h-5" />
                 </div>
             </div>
-            <CommentsView isOpen={showComment} />
+            {commentOpen &&
+                <ViewComments answerId={answer.id} comments={answer.comments} />}
         </div>
     )
 }

@@ -14,6 +14,13 @@ export type FetchAnswerType= {
         id: string;
         name: string | null;
     }[];
+    comments: {
+        comment: string;
+        author: {
+            name: string | null;
+            image: string | null;
+        };
+    }[];
     author: {
         image: string | null;
         id: string;
@@ -21,6 +28,7 @@ export type FetchAnswerType= {
     };
     _count: {
         favoritedBy: number;
+        comments: number;
     };
 }
 export type FetchAnswerSWRType={

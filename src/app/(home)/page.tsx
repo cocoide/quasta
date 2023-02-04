@@ -3,19 +3,19 @@ import SuggestFeed from './SuggestFeed'
 import TimeLineView from './TimeLineView'
 import UserModal from '../../components/features/UserModal';
 import AnswerLists from './AnswerLists';
-import { API_URL } from '../../libs/consts';
 import { FetchAnswerType } from '../../model/types';
 
 export const dynamic = "force-dynamic";
 
-const getAnswers = async (): Promise<FetchAnswerType[]> => {
-    const res = await fetch(`${API_URL}/answer`, {
-        method: "GET", cache: 'no-store'
-    },)
-    return res.json()
-};
-const HomePage = async () => {
-    const anwers = await getAnswers()
+export default async function page() {
+
+    const getAnswers = async (): Promise<FetchAnswerType[]> => {
+        const res = await fetch(`https://quasta.vercel.app/api/answer`, {
+            method: "GET"
+        },)
+        return res.json()
+    };
+    const anwers = await getAnswers();
 
     return (
         <>
@@ -31,4 +31,3 @@ const HomePage = async () => {
         </>
     )
 }
-export default HomePage

@@ -23,6 +23,17 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                             query: true
                         },
                     },
+                    comments:{
+                        select:{
+                            comment: true,
+                            author:{
+                                select:{
+                                    name: true,
+                                    image: true,
+                                },
+                            }
+                        }
+                    },
                     author: {
                         select: {
                             id: true,
@@ -32,14 +43,15 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                     },
                     _count: {
                         select: {
-                            favoritedBy: true
+                            favoritedBy: true,
+                            comments: true,
                         },
                     },
                 },
             })
             return res.json(answers)
         } catch (e) {
-            return res.status(500).json({error: "Server Error Happened"});
+            return res.status(500).json({error: "Server error happened"});
         }
     }
 }
