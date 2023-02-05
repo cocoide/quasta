@@ -1,20 +1,41 @@
 "use client"
 import Link from 'next/link'
-import { MagnifyingGlassIcon, PlusCircleIcon } from '@heroicons/react/24/outline'
-import { useMemo, useRef, useState } from 'react'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { useAuth } from '../../../utils/hooks/useAuth'
-import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { useRecoilState } from 'recoil'
 import { userModalAtom } from '../../model/atoms'
+import SuggestedLists from './SuggestedLists'
+import { API_URL } from '../../libs/consts'
+
+const lists = [
+    { question: "わええあw" },
+    { question: "わewa" },
+    { question: "わええあwジェwjアイエじゃ" },
+    { question: "声わジェwjアイエじゃ" },
+]
+
 
 const Header = () => {
-    const inputRef = useRef<HTMLInputElement>(null);
-    const [isMenuOpen, setMenuOpen] = useState(false)
-    const [isUserModalOpen, setUserModalOpen] = useRecoilState(userModalAtom)
     const [query, setQuery] = useState("")
+    const [isMenuOpen, setMenuOpen] = useState(false)
+    const [searchLists, setSearchLists] = useState<{ question: string }[]>()
+
+    useEffect(() => {
+        fetch(`${API_URL}/search`, { method: "GET" })
+            .then(res => res.json())
+            .then(data => setSearchLists(data))
+    }, [isMenuOpen]);
+
+    const inputRef = useRef<HTMLInputElement>(null);
+    const [isUserModalOpen, setUserModalOpen] = useRecoilState(userModalAtom)
     const { signInWithGoogle, user } = useAuth()
     
+    function handleChange(e: ChangeEvent<HTMLInputElement>) {
+        setQuery(e.target?.value)
+    }
+
     return (
         <div className="sticky top-0 z-30 w-screen">
             <div className="flex justify-between items-center py-2 px-5  bg-nothing h-18 border-b border-shadow">
@@ -49,35 +70,32 @@ const Header = () => {
             {isMenuOpen &&
                 <div className="">
 
-                    <div className="fixed inset-x-0 top-0 flex flex-col  border-b border-shadow py-2 px-3  md:px-[15%] lg:px-[20%] bg-white/95 backdrop-blur-md
-                    divide-y divide-shadow z-20
+                    <div className="fixed inset-x-0 top-0 flex flex-col  py-2 px-3  md:px-[15%] lg:px-[20%] bg-white/95 backdrop-blur-md z-20
                 shadow-md animate-openModal">
                         <div className="flex items-center">
 
                             <div className="flex items-center w-[100%] px-2 bg-shadow rounded-md mb-2">
                         <MagnifyingGlassIcon className="h-5 w-5  text-gray-500" />
-                        <input ref={inputRef}
+                                <input ref={inputRef} onChange={handleChange}
                             type="search" placeholder="キーワード、#ハッシュタグ" className="bg-shadow w-[100%] p-1 border-transparent focus:ring-0 border-none h-10" />
                             </div>
 
-                            <button onClick={() => setMenuOpen(false)} className="flex w-30 pb-2  pl-2 text-sm whitespace-nowrap items-center">キャンセル</button>
+                            <button onClick={() => {
+                                setMenuOpen(false)
+                                setQuery("")
+                            }} className="flex w-30 pb-2  pl-2 text-sm whitespace-nowrap items-center">キャンセル</button>
                         </div>
 
                     {
-                        (query.length > 0) ?
-                            <div className="">
-                                <div>教育</div>
-                                <div>プログラミング</div>
-                            </div>
-                            :
-                            <></>
+                            (query.length == 0) ?
+                                <>
+                                    <div className="p-2  hover:bg-neutral duration-100 bg-white">キーワードを入力</div>
+                                </>
+                                :
+                                <SuggestedLists searchLists={searchLists as unknown as { query: string }[]} keyword={query} />
                         }
-                        <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">💭回答する</h2></Link>
-                        <Link href={"/community"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">📚コミュニティ</h2></Link>
-                    <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100">🗣Quasta(クアスタ)に関するFAQ</h2></Link>
-                        <Link href={"/"}><h2 className="p-2 rounded-md hover:bg-neutral duration-100 border-b border-shadow">💻設定</h2></Link>
                     </div>
-                    <button onClick={() => setMenuOpen(false)} className="bg-gray-500/30  fixed inset-0 backdrop-blur-sm z-10 animate-appear" ></button>
+                    <button onClick={() => { setMenuOpen(false), setQuery("") }} className="bg-gray-500/30  fixed inset-0 backdrop-blur-sm z-10 animate-appear" ></button>
                 </div>
             } 
         </div>
