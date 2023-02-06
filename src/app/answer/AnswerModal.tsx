@@ -50,7 +50,8 @@ const AnswerModal = () => {
             inputText={answerText}
             textAreaRef={textAreaRef}
             handleChange={handleChange}
-        ><h3 className="text-xl text-gray-700 m-10">{isSelectQuery}</h3>
+        >
+            <h3 className="text-xl text-gray-700 m-10">{isSelectQuery}</h3>
         </CreateView>
     )
 }

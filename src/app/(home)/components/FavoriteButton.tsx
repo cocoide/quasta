@@ -6,9 +6,10 @@ import { useAuth } from '../../../../utils/hooks/useAuth';
 import { API_URL } from '../../../libs/consts';
 import { HandThumbUpIcon } from '@heroicons/react/24/outline';
 import { clsx } from '../../../../utils/clsx';
-import { FavoriteUserType } from '../../../model/types';
+import { FavoriteUserType, FetchAnswerType } from '../../../model/types';
 import useMutation from "swr/mutation";
 import { answerFetcher } from '../../../../utils/fetcher';
+import { useSWRConfig } from 'swr';
 
 type FavoriteButtonType = {
     answerId: string,
@@ -20,7 +21,7 @@ const FavoriteButton = ({ answerId, favorite_users }: FavoriteButtonType) => {
     const router = useRouter()
     const { user } = useAuth()
     const { trigger } = useMutation(`${API_URL}/answer`, answerFetcher);
-
+    const { mutate } = useSWRConfig()
 
     async function handleClick(answerId: string) {
         if (checkAnswerIsLike(favorite_users, user?.id as string)) {
@@ -30,19 +31,28 @@ const FavoriteButton = ({ answerId, favorite_users }: FavoriteButtonType) => {
     }
 
     async function handleFavorite(answerId: string) {
-        await fetch(`${API_URL}/answer/favorite/${answerId}`, {
+        mutate(`${API_URL}/answer`)
+
+        const res = await fetch(`${API_URL}/answer/favorite/${answerId}`, {
             method: "PATCH",
         })
-        trigger()
-        router.refresh()
+
+        if (res.ok) {
+            trigger()
+            router.refresh()
+        }
     };
 
     async function handleUnFavorite(answerId: string) {
-        await fetch(`${API_URL}/answer/favorite/${answerId}`, {
+        mutate(`${API_URL}/answer`)
+
+        const res = await fetch(`${API_URL}/answer/favorite/${answerId}`, {
             method: "DELETE",
         })
-        trigger()
-        router.refresh()
+        if (res.ok) {
+            trigger()
+            router.refresh()
+        }
     };
 
     return (

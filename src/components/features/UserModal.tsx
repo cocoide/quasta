@@ -33,18 +33,18 @@ const UserModal = () => {
                         isCloseStyle ? "animate-slideOut" : "animate-slideIn")}>
 
 
-                    <div className="w-full min-h-screen p-12 flex justify-between flex-col items-center">
+                    <div className="w-full min-h-screen p-5 flex  flex-col items-center">
 
-                        <div className="w-full flex flex-col  items-center justify-center">
+                        <div className="w-full flex flex-col  items-center justify-center p-10">
                                 <div className="mb-3 text-center text-xl">{user?.name}</div>
                                 <Image src={user?.image as string} width={150} height={100} alt={user?.name as string} className="h-[100px] w-[100px] rounded-full bg-shadow" />
                             </div>
                         {/* <div className=" ring-1 ring-shadow rounded-2xl shadow-sm aspect-square w-full"></div> */}
 
-                        <div className="flex justify-start flex-col items-center space-y-3 w-full text-gray-500">
-                            <div className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full flex items-center"><PencilIcon className='h-4 w-4 mx-3' />プロフィール編集</div>
-                            <Link href={"/setting"} className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full flex items-center"><EllipsisHorizontalCircleIcon className='h-4 w-4 mx-3' />設定</Link>
-                            <button onClick={() => signOut()} className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full text-center flex items-center"><UserMinusIcon className='h-4 w-4 mx-3' />サインアウト</button>
+                        <div className="flex justify-start flex-col items-center space-y-3 w-full text-gray-500 text-[20px]">
+                            <div className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full flex items-center"><PencilIcon className='h-6 w-6 mx-5' />プロフィール編集</div>
+                            <Link href={"/setting"} className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full flex items-center"><EllipsisHorizontalCircleIcon className='h-6 w-6 mx-5' />アカウント設定</Link>
+                            <button onClick={() => signOut()} className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full text-center flex items-center"><UserMinusIcon className='h-6 w-6 mx-5' />サインアウト</button>
                             </div>
 
                         </div>
