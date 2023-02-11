@@ -13,11 +13,12 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
     const [commentOpen, setCommentOpen] = useState(false)
     const { user } = useAuth()
     return (
-        <div>
-            <div className="flex flex-col justify-center items-start p-2 space-y-1">
+        <div className="flex flex-row space-x-2 p-4 w-full">
+            <Image src={answer.author.image as string} width={70} height={70} alt={answer.author.name as string} className="h-[35px] w-[35px] rounded-full bg-shadow" />
+
+            <div className="flex flex-col justify-center items-start space-y-2 w-full">
                 <div className="flex flex-row items-center  justify-between space-x-2 w-full">
                     <Link href={`/user/${answer.author.id}`} className="flex flex-row items-center space-x-3">
-                        <Image src={answer.author.image as string} width={70} height={70} alt={answer.author.name as string} className="h-[35px] w-[35px] rounded-full bg-shadow" />
                         <div className="flex flex-col justify-center">
                             <div className="text-[13px] text-gray-600">{answer.author.name}</div>
                             <div className="text-[10px] text-gray-500">{answer.author.profile?.occupation}</div>
@@ -26,14 +27,14 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
                     <button className="flex items-center bg-gray-50 text-gray-400 rounded-xl p-1 whitespace-nowrap text-[10px]"><EllipsisHorizontalIcon className="h-4 w-4" /></button>
                 </div>
 
+                <div className="text-[14px] text-gray-800 font-semibold">{answer.query.query}</div>
 
                 {answer?.image as string &&
-                    <Image src={answer?.image as string} width={100} height={100} alt={answer.answer as string}
-                        className="h-[200px] w-auto mx-auto rounded-md" />
+                    <Image src={answer?.image as string} width={350} height={350} alt={answer.answer as string}
+                        className="h-[100%] w-auto rounded-md mx-auto" />
                 }
-                <div className="px-1 text-[16px] text-gray-800 font-semibold pt-2">{answer.query.query}</div>
-                <div className="px-2 text-[14px] text-gray-700" >{answer.answer}</div>
 
+                <div className="text-[14px] text-gray-700" >{answer.answer}</div>
 
                 <div className="flex flex-row items-center justify-between  text-gray-400 px-2 w-full">
                     <div className="flex items-center bg-neutral rounded-3xl divide-x divide-gray-300">
