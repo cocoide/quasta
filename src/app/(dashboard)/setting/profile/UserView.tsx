@@ -10,7 +10,6 @@ import axios from 'axios';
 import { v4 as uuidv4 } from "uuid";
 import { supabase } from '../../../../libs/supabase';
 import { useAuth } from '../../../../../utils/hooks/useAuth';
-import { createClient } from '@supabase/supabase-js';
 import RenderImage from '../../../../components/ui/image/RenderImage';
 
 
@@ -21,7 +20,7 @@ const UserView = () => {
     const { data } = useSWR(`${API_URL}/user`, userFetcher)
     const { user } = useAuth()
     const [imagePath, setImagePath] = useState<string>()
-
+    
     async function handleUploadImage(e: ChangeEvent<HTMLInputElement>) {
         const imageFile = e.target?.files![0]
         uploadStorage(imageFile)
@@ -31,7 +30,7 @@ const UserView = () => {
     };
 
     async function uploadStorage(imageFile: File) {
-        const pathName = `${user?.id}/${uuidv4()}`
+        const pathName = `${user?.id}/avater/${uuidv4()}`
         const { data } = await supabase.storage
             .from("quasta")
             .upload(pathName, imageFile)
@@ -43,7 +42,6 @@ const UserView = () => {
         setValue("name", data?.name)
         setValue("occupation", data?.profile?.occupation)
         setValue("overview", data?.profile?.overview)
-        // setValue("image", data?.image)
     })
 
     return (

@@ -21,16 +21,19 @@ const CreateView = ({ closeFunction, postFunction, handleChange, isModalOpen, ch
             {isModalOpen &&
                 <>
                     {/* background shadow */}
-                <button onClick={closeFunction} className="z-30 bg-gray-500/30  fixed inset-0 backdrop-blur-sm  animate-appear" />
+                <button onClick={closeFunction} type="button"
+                    className="z-30 bg-gray-500/30  fixed inset-0 backdrop-blur-sm  animate-appear" />
 
                     {/* modal content */}
-                <div className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear rounded-t-3xl sm:rounded-3xl  
+                <form onSubmit={postFunction}
+                    className="z-40 bg-white fixed inset-0 sm:mx-[15%] sm:my-20 md:mx-[20%] lg:mx-[30%] md:my-[100px]  animate-appear rounded-t-3xl sm:rounded-3xl  
 sm:animate-scale py-10 px-5 sm:px-10 flex flex-col  mt-[150px] 
 items-center animate-upModal duration-700">
-                        <button onClick={closeFunction}
+                    <button onClick={closeFunction} type="button"
                             className="absolute top-5 left-5 rounded-md"
                         ><XMarkIcon className=" h-8 w-8 text-gray-400" /></button>
-                        <button onClick={postFunction} className="absolute  top-5  right-5 bg-primary rounded-xl shadow-sm p-2 text-bold text-white flex items-center"
+                    <button type="submit"
+                        className="absolute  top-5  right-5 bg-primary rounded-xl shadow-sm p-2 text-bold text-white flex items-center"
                         ><PlusCircleIcon className="mr-1 h-5 w-5 text-white" />{postAction}</button>
                         <div className="flex flex-col w-[100%] justify-center items-center">
 
@@ -42,7 +45,7 @@ items-center animate-upModal duration-700">
                             placeholder={placeholder} value={inputText}></textarea>
                             <div className="border w-full border-shadow mb-5"></div>
                         </div>
-                    </div>
+                </form>
                 </>
             }
         </>

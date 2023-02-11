@@ -12,6 +12,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                 select: {
                     id: true,
                     answer: true,
+                    image: true,
                     favoritedBy: {
                         select: {
                             id: true,

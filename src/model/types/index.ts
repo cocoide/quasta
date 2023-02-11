@@ -18,6 +18,7 @@ export type FetchAnswerType= {
     };
     id: string;
     answer: string;
+    image: string | null;
     favoritedBy: {
         id: string;
         name: string | null;

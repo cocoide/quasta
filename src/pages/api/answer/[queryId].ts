@@ -14,8 +14,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             await db.answer.create({
                 data: {
                     authorId: session?.user.id,
-                    answer: req.body,
-                    queryId: req.query.queryId as string
+                    answer: req.body.answer,
+                    queryId: req.query.queryId as string,
+                    image: req.body.answer,
                 }
             }
             )

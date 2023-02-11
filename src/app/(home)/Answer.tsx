@@ -29,6 +29,11 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
 
                 <div className="px-1 text-[18px] text-gray-800 font-semibold">{answer.query.query}</div>
                 <div className="px-2 text-[17px] text-gray-700" >{answer.answer}</div>
+
+                {answer?.image as string &&
+                    <Image src={answer?.image as string} width={100} height={100} alt={answer.answer as string} className="h-[150px] w-auto mx-auto" />
+                }
+
                 <div className="flex flex-row items-center space-x-12  text-gray-400 px-2 w-full">
                     <div className="flex items-center bg-neutral rounded-3xl divide-x divide-gray-300">
                         <FavoriteButton

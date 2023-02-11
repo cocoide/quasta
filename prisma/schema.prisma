@@ -25,6 +25,7 @@ model Answer{
    answer String @unique
    queryId String
    authorId String
+   image String?
    comments Comment[]
    favoritedBy User[] @relation("FavoriteAnswer")
   author  User @relation(fields: [authorId], references: [id])
@@ -58,6 +59,8 @@ model User {
   comments Comment[]
   favorite_answers Answer[] @relation("FavoriteAnswer")
   favorite_comments Comment[] @relation("FavoriteCommnet")
+  followedBy User[] @relation("UserFollows")
+  following User[] @relation("UserFollows")
   @@map(name: "users")
 }
 
