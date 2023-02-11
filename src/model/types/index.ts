@@ -3,6 +3,14 @@ export type FavoriteUserType={
     name: string
 };
 
+export type FetchUserType =  {
+    image: string | null;
+    name: string | null;
+    profile: {
+        occupation: string | null;
+        overview: string | null;
+    } | null;
+}| null
 
 export type FetchAnswerType= {
     query: {

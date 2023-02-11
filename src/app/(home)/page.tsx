@@ -18,7 +18,7 @@ export default async function page() {
     const anwers = await getAnswers();
 
     return (
-        <>
+        <div>
             <div className="md:hidden">
                 <UserModal />
                 <Header />
@@ -28,6 +28,6 @@ export default async function page() {
             <SuggestFeed />
             <TimeLineView />
         </div>
-        </>
+        </div>
     )
 }

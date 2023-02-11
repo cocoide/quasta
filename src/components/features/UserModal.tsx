@@ -42,7 +42,7 @@ const UserModal = () => {
                         {/* <div className=" ring-1 ring-shadow rounded-2xl shadow-sm aspect-square w-full"></div> */}
 
                         <div className="flex justify-start flex-col items-center space-y-3 w-full text-gray-500 text-[20px]">
-                            <div className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full flex items-center"><PencilIcon className='h-6 w-6 mx-5' />プロフィール編集</div>
+                            <Link href={"/setting/profile"} className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full flex items-center"><PencilIcon className='h-6 w-6 mx-5' />プロフィール編集</Link>
                             <Link href={"/setting"} className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full flex items-center"><EllipsisHorizontalCircleIcon className='h-6 w-6 mx-5' />アカウント設定</Link>
                             <button onClick={() => signOut()} className="ring-1 ring-outline shadow-sm p-1 rounded-xl w-full text-center flex items-center"><UserMinusIcon className='h-6 w-6 mx-5' />サインアウト</button>
                             </div>

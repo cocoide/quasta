@@ -54,10 +54,19 @@ model User {
   sessions Session[]
   question Question[]
   answer Answer[]  
+  profile Profile?
   comments Comment[]
   favorite_answers Answer[] @relation("FavoriteAnswer")
   favorite_comments Comment[] @relation("FavoriteCommnet")
   @@map(name: "users")
+}
+
+model Profile {
+  id  String    @id @default(cuid())
+  overview String?
+  occupation String?
+  userId String @unique
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Account {

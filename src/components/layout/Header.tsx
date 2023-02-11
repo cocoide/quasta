@@ -8,6 +8,8 @@ import { useRecoilState } from 'recoil'
 import { userModalAtom } from '../../model/atoms'
 import SuggestedLists from './SuggestedLists'
 import { API_URL } from '../../libs/consts'
+import { clsx } from '../../../utils/clsx'
+import useScrollPosition from '../../../utils/hooks/browser/useScrollPosition'
 
 const lists = [
     { question: "わええあw" },
@@ -35,13 +37,13 @@ const Header = () => {
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         setQuery(e.target?.value)
     }
-
+    const scrollPostion = useScrollPosition()
     return (
-        <div className="sticky top-0 z-30 w-screen">
+        <div className={clsx("sticky top-0 z-30 w-screen")}>
             <div className="flex justify-between items-center py-2 px-5  bg-nothing h-18 border-b border-shadow">
 
             <Link href="/" className="text-[30px] font-bold text-primary"
-                >Questa</Link>
+                >Quasta</Link>
 
             <div className="flex items-center space-x-4 md:space-x-5">
 

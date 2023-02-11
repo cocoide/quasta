@@ -1,4 +1,4 @@
-import { BookmarkIcon, ChatBubbleOvalLeftIcon, HeartIcon, ShareIcon } from '@heroicons/react/24/outline'
+import { BookmarkIcon, ChatBubbleOvalLeftIcon } from '@heroicons/react/24/outline'
 
 const postLists = [
     { subject: "今の日本で幸せに生きる方法", liked: 13, coment: 5, hashtag: ["人生哲学", "キャリア"], thumbnail: "https://i.gzn.jp/img/2020/07/06/oxford-how-live-happy-life/00.jpg" },

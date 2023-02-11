@@ -15,7 +15,7 @@ const SuggestedLists = ({
         <div className="flex flex-col items-start justify-center w-full ">
             {suggestions?.map((s, i) => {
                 return (
-                    <Link href={`/search?q=${s.query}`} key={i} className="hover:bg-neutral  text-[17px] p-2 w-full border-y border-shadow flex items-center">
+                    <Link href={`/${s.query}`} key={i} className="hover:bg-neutral  text-[17px] p-2 w-full border-y border-shadow flex items-center">
                         <MagnifyingGlassIcon className="h-5 w-5 text-gray-600 mr-3" />{s.query}
                     </Link>
                 )

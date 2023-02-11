@@ -29,7 +29,7 @@ const LeftSidevar = () => {
                 <Link href={"/"} className="p-2 mr-auto rounded-xl hover:bg-gray-100 duration-500 text-gray-600 flex items-center"
                 ><BellIcon className="h-5 w-5 mr-3" />通知</Link>
 
-                <Link href={"/"} className="p-2 mr-auto rounded-xl hover:bg-gray-100 duration-500 text-gray-600 flex items-center"
+                <Link href={"/setting"} className="p-2 mr-auto rounded-xl hover:bg-gray-100 duration-500 text-gray-600 flex items-center"
                 ><EllipsisHorizontalCircleIcon className="h-5 w-5 mr-3" />設定</Link>
 
                 <Link href={"/"} className="p-2 mr-auto rounded-xl hover:bg-gray-100 duration-500 text-gray-600 flex items-center"
