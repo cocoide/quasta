@@ -20,13 +20,12 @@ const onSubmit = async (data: any) => {
 const UserView = () => {
     const { register, handleSubmit, setValue } = useForm({})
     const { data } = useSWR(`${API_URL}/user`, userFetcher)
-    const [imagePath, setImagePath] = useState<string>()
     const { user } = useAuth()
+    const [imagePath, setImagePath] = useState<string>()
 
-    function handleUploadImage(e: ChangeEvent<HTMLInputElement>) {
+    async function handleUploadImage(e: ChangeEvent<HTMLInputElement>) {
         const imageFile = e.target?.files![0]
         uploadStorage(imageFile)
-        setUploadImagepath(imageFile)
     }
 
     async function uploadStorage(imageFile: File) {
@@ -34,34 +33,34 @@ const UserView = () => {
         const { data } = await supabase.storage
             .from("quasta")
             .upload(pathName, imageFile)
-        return { pathName: `https://kwiypgkubpkqnbedclhy.supabase.co/storage/v1/object/public/quasta/${data?.path}` }
-    }
-    async function setUploadImagepath(imageFile: File) {
-        const { pathName } = await uploadStorage(imageFile)
-        console.log(pathName)
-        setImagePath(pathName)
+        setImagePath(`https://kwiypgkubpkqnbedclhy.supabase.co/storage/v1/object/public/quasta/${data?.path}`)
+        return setValue("image", `https://kwiypgkubpkqnbedclhy.supabase.co/storage/v1/object/public/quasta/${data?.path}`)
     }
 
     useEffect(() => {
         setValue("name", data?.name)
         setValue("occupation", data?.profile?.occupation)
         setValue("overview", data?.profile?.overview)
-        setImagePath(data?.image as string)
+        setValue("image", data?.image)
     })
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="p-5 flex flex-col md:flex-row w-full  h-full">
+        <form onSubmit={async () => handleSubmit(onSubmit)} className="p-5 flex flex-col md:flex-row w-full  h-full">
             <div className="mr-5 mb-3 flex-none">
-                {data?.image &&
                     <div>
                         <label>
-                            <RenderImage src={imagePath as string} alt={data?.name as string}
+                        {imagePath != undefined ?
+                            <RenderImage src={imagePath as unknown as string} alt={data?.name as string}
                                 style={"h-[70px] w-[70px] rounded-full bg-shadow"} />
+                            :
+                            data?.image &&
+                            <Image src={data?.image as string} alt={data?.name as string} width={100} height={100}
+                                className="h-[70px] w-[70px] rounded-full bg-shadow" />
+                        }
                             <input type="file" className="sr-only"
                                 onChange={handleUploadImage} />
                         </label>
-                    </div>
-                }
+                </div>
             </div>
 
             <div className="flex flex-col space-y-1 w-full ">

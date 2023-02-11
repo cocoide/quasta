@@ -41,6 +41,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                 },
                 data: {
                     name: req.body.name,
+                    image: req.body.image,
                     profile: {
                         upsert: {
                             create: {
