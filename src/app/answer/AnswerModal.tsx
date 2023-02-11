@@ -84,7 +84,6 @@ const AnswerModal = () => {
             handleChange={handleChange}
         ><>
                 <h3 className="text-xl text-gray-700 m-10">{isSelectQuery}</h3>
-                {answerText}
                 <label className="w-full p-3">
 
                     {imagePath != undefined ?

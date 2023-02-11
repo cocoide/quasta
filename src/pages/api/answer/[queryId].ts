@@ -16,7 +16,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                     authorId: session?.user.id,
                     answer: req.body.answer,
                     queryId: req.query.queryId as string,
-                    image: req.body.answer,
+                    image: req.body.image,
                 }
             }
             )

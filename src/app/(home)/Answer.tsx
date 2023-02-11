@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import { FavoriteUserType, FetchAnswerType, } from '../../model/types'
-import { ArrowPathIcon, ChatBubbleOvalLeftIcon, GiftIcon, HandThumbDownIcon, PlusCircleIcon } from '@heroicons/react/24/outline'
+import { ArrowPathIcon, ChatBubbleOvalLeftIcon, EllipsisHorizontalIcon, GiftIcon, HandThumbDownIcon, PlusCircleIcon } from '@heroicons/react/24/outline'
 import FavoriteButton from './components/FavoriteButton'
 import { useState } from 'react'
 import { useAuth } from '../../../utils/hooks/useAuth'
@@ -19,20 +19,20 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
                     <Link href={`/user/${answer.author.id}`} className="flex flex-row items-center space-x-3">
                         <Image src={answer.author.image as string} width={70} height={70} alt={answer.author.name as string} className="h-[35px] w-[35px] rounded-full bg-shadow" />
                         <div className="flex flex-col justify-center">
-                            <div className="text-[10px] text-gray-600">{answer.author.name}</div>
+                            <div className="text-[13px] text-gray-600">{answer.author.name}</div>
                             <div className="text-[10px] text-gray-500">{answer.author.profile?.occupation}</div>
                         </div>
                     </Link>
-                    <button className="flex items-center bg-blue-50 text-blue-400 rounded-xl p-1 whitespace-nowrap text-[10px]"><PlusCircleIcon className="h-4 w-4" />フォローする</button>
+                    <button className="flex items-center bg-gray-50 text-gray-400 rounded-xl p-1 whitespace-nowrap text-[10px]"><EllipsisHorizontalIcon className="h-4 w-4" /></button>
                 </div>
 
 
+                {answer?.image as string &&
+                    <Image src={answer?.image as string} width={100} height={100} alt={answer.answer as string} className="h-[200px] w-auto mx-auto m-2 rounded-md" />
+                }
                 <div className="px-1 text-[18px] text-gray-800 font-semibold">{answer.query.query}</div>
                 <div className="px-2 text-[17px] text-gray-700" >{answer.answer}</div>
 
-                {answer?.image as string &&
-                    <Image src={answer?.image as string} width={100} height={100} alt={answer.answer as string} className="h-[150px] w-auto mx-auto" />
-                }
 
                 <div className="flex flex-row items-center space-x-12  text-gray-400 px-2 w-full">
                     <div className="flex items-center bg-neutral rounded-3xl divide-x divide-gray-300">
