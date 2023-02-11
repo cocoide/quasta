@@ -14,7 +14,7 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
     const { user } = useAuth()
     return (
         <div>
-            <div className="flex flex-col justify-center items-start p-4 space-y-1">
+            <div className="flex flex-col justify-center items-start p-2 space-y-1">
                 <div className="flex flex-row items-center  justify-between space-x-2 w-full">
                     <Link href={`/user/${answer.author.id}`} className="flex flex-row items-center space-x-3">
                         <Image src={answer.author.image as string} width={70} height={70} alt={answer.author.name as string} className="h-[35px] w-[35px] rounded-full bg-shadow" />
@@ -35,24 +35,24 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
                 <div className="px-2 text-[14px] text-gray-700" >{answer.answer}</div>
 
 
-                <div className="flex flex-row items-center justify-between space-x-12  text-gray-400 px-2 w-full pt-2">
+                <div className="flex flex-row items-center justify-between  text-gray-400 px-2 w-full">
                     <div className="flex items-center bg-neutral rounded-3xl divide-x divide-gray-300">
                         <FavoriteButton
                             answerId={answer.id}
                             favorite_users={answer.favoritedBy as FavoriteUserType[]} />
                         <HandThumbDownIcon className="h-7 w-7 px-1" />
                     </div>
-                    <ArrowPathIcon className="w-5 h-5" />
+                    <ArrowPathIcon className="w-4 h-4" />
                     <button onClick={() => {
                         if (user) {
                             return setCommentOpen(!commentOpen)
                         }
                     }}
                         className="flex items-center">
-                        <ChatBubbleOvalLeftIcon className="w-5 h-5" />{answer._count.comments > 0 && answer._count.comments}
+                        <ChatBubbleOvalLeftIcon className="w-4 h-4" />{answer._count.comments > 0 && answer._count.comments}
                     </button>
-                    <FaceSmileIcon className="w-5 h-5" />
-                    <ShareIcon className="w-5 h-5" />
+                    <FaceSmileIcon className="w-4 h-4" />
+                    <ShareIcon className="w-4 h-4" />
                 </div>
             </div>
             {commentOpen &&
