@@ -13,9 +13,8 @@ import { useAuth } from '../../../../../utils/hooks/useAuth';
 import { createClient } from '@supabase/supabase-js';
 import RenderImage from '../../../../components/ui/image/RenderImage';
 
-const onSubmit = async (data: any) => {
-    await axios.patch(`${API_URL}/user`, data)
-};
+
+const accept = '.png, .jpg, .jpeg, .gif'
 
 const UserView = () => {
     const { register, handleSubmit, setValue } = useForm({})
@@ -27,25 +26,28 @@ const UserView = () => {
         const imageFile = e.target?.files![0]
         uploadStorage(imageFile)
     }
+    const onSubmit = async (data: any) => {
+        await axios.patch(`${API_URL}/user`, data)
+    };
 
     async function uploadStorage(imageFile: File) {
         const pathName = `${user?.id}/${uuidv4()}`
         const { data } = await supabase.storage
             .from("quasta")
             .upload(pathName, imageFile)
+        setValue("image", `https://kwiypgkubpkqnbedclhy.supabase.co/storage/v1/object/public/quasta/${data?.path}`)
         setImagePath(`https://kwiypgkubpkqnbedclhy.supabase.co/storage/v1/object/public/quasta/${data?.path}`)
-        return setValue("image", `https://kwiypgkubpkqnbedclhy.supabase.co/storage/v1/object/public/quasta/${data?.path}`)
     }
 
     useEffect(() => {
         setValue("name", data?.name)
         setValue("occupation", data?.profile?.occupation)
         setValue("overview", data?.profile?.overview)
-        setValue("image", data?.image)
+        // setValue("image", data?.image)
     })
 
     return (
-        <form onSubmit={async () => handleSubmit(onSubmit)} className="p-5 flex flex-col md:flex-row w-full  h-full">
+        <form onSubmit={handleSubmit(onSubmit)} className="p-5 flex flex-col md:flex-row w-full  h-full">
             <div className="mr-5 mb-3 flex-none">
                     <div>
                         <label>
@@ -57,7 +59,7 @@ const UserView = () => {
                             <Image src={data?.image as string} alt={data?.name as string} width={100} height={100}
                                 className="h-[70px] w-[70px] rounded-full bg-shadow" />
                         }
-                            <input type="file" className="sr-only"
+                        <input type="file" className="sr-only" accept={accept}
                                 onChange={handleUploadImage} />
                         </label>
                 </div>
