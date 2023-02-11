@@ -30,6 +30,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                                 select:{
                                     name: true,
                                     image: true,
+                                    profile:{
+                                        select:{
+                                            occupation: true,
+                                        }
+                                    }
                                 },
                             }
                         }

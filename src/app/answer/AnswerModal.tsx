@@ -29,7 +29,7 @@ const AnswerModal = () => {
 
     async function postAnswer() {
 
-        if (answerText.length > 5) {
+        if (answerText.length > 2) {
             await fetch(`${API_URL}/answer/${isSelectQuery}`, {
                 method: "POST",
                 body: answerText

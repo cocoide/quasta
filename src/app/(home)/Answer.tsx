@@ -6,6 +6,7 @@ import FavoriteButton from './components/FavoriteButton'
 import { useState } from 'react'
 import { useAuth } from '../../../utils/hooks/useAuth'
 import ViewComments from './components/ViewComments';
+import Link from 'next/link'
 
 
 const Answer = ({ answer }: { answer: FetchAnswerType }) => {
@@ -15,13 +16,13 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
         <div>
             <div className="flex flex-col justify-center items-start p-4 space-y-2">
                 <div className="flex flex-row items-center  justify-between space-x-2 w-full">
-                    <div className="flex flex-row items-center space-x-3">
+                    <Link href={`/user/${answer.author.id}`} className="flex flex-row items-center space-x-3">
                         <Image src={answer.author.image as string} width={70} height={70} alt={answer.author.name as string} className="h-[35px] w-[35px] rounded-full bg-shadow" />
                         <div className="flex flex-col justify-center">
                             <div className="text-[10px] text-gray-600">{answer.author.name}</div>
-                            <div className="text-[10px] text-gray-500">大学生</div>
+                            <div className="text-[10px] text-gray-500">{answer.author.profile?.occupation}</div>
                         </div>
-                    </div>
+                    </Link>
                     <button className="flex items-center bg-blue-50 text-blue-400 rounded-xl p-1 whitespace-nowrap text-[10px]"><PlusCircleIcon className="h-4 w-4" />フォローする</button>
                 </div>
 

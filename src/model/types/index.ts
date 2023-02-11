@@ -33,6 +33,9 @@ export type FetchAnswerType= {
         image: string | null;
         id: string;
         name: string | null;
+        profile: {
+            occupation: string | null;
+        } | null;
     };
     _count: {
         favoritedBy: number;
