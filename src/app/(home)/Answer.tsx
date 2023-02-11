@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import { FavoriteUserType, FetchAnswerType, } from '../../model/types'
-import { ArrowPathIcon, ChatBubbleOvalLeftIcon, EllipsisHorizontalIcon, GiftIcon, HandThumbDownIcon, PlusCircleIcon } from '@heroicons/react/24/outline'
+import { ArrowPathIcon, ChatBubbleOvalLeftIcon, EllipsisHorizontalIcon, FaceSmileIcon, GiftIcon, HandThumbDownIcon, PlusCircleIcon, ShareIcon } from '@heroicons/react/24/outline'
 import FavoriteButton from './components/FavoriteButton'
 import { useState } from 'react'
 import { useAuth } from '../../../utils/hooks/useAuth'
@@ -14,7 +14,7 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
     const { user } = useAuth()
     return (
         <div>
-            <div className="flex flex-col justify-center items-start p-4 space-y-2">
+            <div className="flex flex-col justify-center items-start p-4 space-y-1">
                 <div className="flex flex-row items-center  justify-between space-x-2 w-full">
                     <Link href={`/user/${answer.author.id}`} className="flex flex-row items-center space-x-3">
                         <Image src={answer.author.image as string} width={70} height={70} alt={answer.author.name as string} className="h-[35px] w-[35px] rounded-full bg-shadow" />
@@ -28,13 +28,14 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
 
 
                 {answer?.image as string &&
-                    <Image src={answer?.image as string} width={100} height={100} alt={answer.answer as string} className="h-[200px] w-auto mx-auto m-2 rounded-md" />
+                    <Image src={answer?.image as string} width={100} height={100} alt={answer.answer as string}
+                        className="h-[200px] w-auto mx-auto rounded-md" />
                 }
-                <div className="px-1 text-[18px] text-gray-800 font-semibold">{answer.query.query}</div>
-                <div className="px-2 text-[17px] text-gray-700" >{answer.answer}</div>
+                <div className="px-1 text-[16px] text-gray-800 font-semibold pt-2">{answer.query.query}</div>
+                <div className="px-2 text-[14px] text-gray-700" >{answer.answer}</div>
 
 
-                <div className="flex flex-row items-center space-x-12  text-gray-400 px-2 w-full">
+                <div className="flex flex-row items-center justify-between space-x-12  text-gray-400 px-2 w-full pt-2">
                     <div className="flex items-center bg-neutral rounded-3xl divide-x divide-gray-300">
                         <FavoriteButton
                             answerId={answer.id}
@@ -50,7 +51,8 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
                         className="flex items-center">
                         <ChatBubbleOvalLeftIcon className="w-5 h-5" />{answer._count.comments > 0 && answer._count.comments}
                     </button>
-                    <GiftIcon className="w-5 h-5" />
+                    <FaceSmileIcon className="w-5 h-5" />
+                    <ShareIcon className="w-5 h-5" />
                 </div>
             </div>
             {commentOpen &&
