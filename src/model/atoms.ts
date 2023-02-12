@@ -24,3 +24,8 @@ export const loginModalAtom=atom({
     key: "loginModalAtomKey",
     default: false
 })
+
+export const imageViewAtom=atom({
+    key: "imageViewAtomKey",
+    default: ""
+})

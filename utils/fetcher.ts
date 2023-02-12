@@ -9,3 +9,8 @@ export const userFetcher = async (url: string): Promise<FetchUserType> => {
     const res = await fetch(url)
     return await res.json() as FetchUserType
 };
+
+export const checkFetcher = async (url: string): Promise<boolean> => {
+    const res = await fetch(url)
+    return await res.json() as boolean
+};

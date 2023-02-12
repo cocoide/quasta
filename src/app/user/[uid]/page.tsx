@@ -3,6 +3,7 @@ import { db } from '../../../libs/prisma'
 import Image from 'next/image';
 import Link from 'next/link'
 import { BriefcaseIcon } from '@heroicons/react/24/outline';
+import FollowButton from './FollowButton';
 
 export const revalidate = 300
 export const dynamicParams = false
@@ -39,10 +40,11 @@ const page = async ({ params }: { params: { uid: string } }) => {
                     className="h-[100px] w-[100px] rounded-full bg-shadow absolute bottom-[-50px] left-[5%]
             ring-4 ring-white" />
             </div>
-            <div className="w-full flex flex-col  p-5 l">
+            <div className="w-full flex flex-col  p-5 ">
 
-                <Link href={"/setting/profile"} className="ring-1 ring-outline rounded-full p-1 ml-auto w-auto"
-                >プロフィールを編集</Link >
+
+                <FollowButton uid={uid} />
+
                 <div className="w-full flex flex-row  space-x-3 items-center mt-[10px]">
                     <h3 className="">{user?.name}</h3>
                     <h4 className=" text-gray-500 text-sm">@{user?.id}</h4>
