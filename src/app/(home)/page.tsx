@@ -1,6 +1,5 @@
 import Header from '../../components/layout/Header'
 import SuggestFeed from './SuggestFeed'
-import TimeLineView from './TimeLineView'
 import UserModal from '../../components/features/UserModal';
 import AnswerLists from './AnswerLists';
 import { FetchAnswerType } from '../../model/types';
@@ -25,8 +24,7 @@ export default async function page() {
             </div>
             <div className="border-x border-shadow">
                 <AnswerLists initialData={anwers} />
-            <SuggestFeed />
-            <TimeLineView />
+                <SuggestFeed />
         </div>
         </div>
     )

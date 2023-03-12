@@ -6,6 +6,9 @@ import { withMethods } from '../../../../libs/middlewares/with-methods';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
     const session = await getServerSession( req, res, authOptions);
+    if (session === null) {
+        return res.status(403).json(false)
+    };
     if (req.method === "PATCH") {
     try {
         await db.user.update({

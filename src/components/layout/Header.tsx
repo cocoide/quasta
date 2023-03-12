@@ -11,14 +11,6 @@ import { API_URL } from '../../libs/consts'
 import { clsx } from '../../../utils/clsx'
 import useScrollPosition from '../../../utils/hooks/browser/useScrollPosition'
 
-const lists = [
-    { question: "わええあw" },
-    { question: "わewa" },
-    { question: "わええあwジェwjアイエじゃ" },
-    { question: "声わジェwjアイエじゃ" },
-]
-
-
 const Header = () => {
     const [query, setQuery] = useState("")
     const [isMenuOpen, setMenuOpen] = useState(false)

@@ -10,7 +10,7 @@ import axios from 'axios';
 import { v4 as uuidv4 } from "uuid";
 import { supabase } from '../../../../libs/supabase';
 import { useAuth } from '../../../../../utils/hooks/useAuth';
-import RenderImage from '../../../../components/ui/image/RenderImage';
+import NextjsImage from '../../../../components/ui/image/NextjsImage';
 
 
 const accept = '.png, .jpg, .jpeg, .gif'
@@ -50,8 +50,7 @@ const UserView = () => {
                     <div>
                         <label>
                         {imagePath != undefined ?
-                            <RenderImage src={imagePath as unknown as string} alt={data?.name as string}
-                                style={"h-[70px] w-[70px] rounded-full bg-shadow"} />
+                            <NextjsImage src={imagePath} alt={data?.name as string} w={70} h={70} style={"h-[70px] w-[70px] rounded-full bg-shadow"} />
                             :
                             data?.image &&
                             <Image src={data?.image as string} alt={data?.name as string} width={100} height={100}

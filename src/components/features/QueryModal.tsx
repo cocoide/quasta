@@ -2,7 +2,7 @@
 
 import { GlobeEuropeAfricaIcon, PlusCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
-import { ChangeEvent, useMemo, useRef, useState } from 'react'
+import { ChangeEvent, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { queryModalAtom } from '../../model/atoms'
 import { API_URL } from '../../libs/consts'

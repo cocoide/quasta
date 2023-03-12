@@ -1,12 +1,13 @@
 "use client"
 import Image from 'next/image'
 import { FavoriteUserType, FetchAnswerType, } from '../../model/types'
-import { ArrowPathIcon, ChatBubbleOvalLeftIcon, EllipsisHorizontalIcon, FaceSmileIcon, GiftIcon, HandThumbDownIcon, PlusCircleIcon, ShareIcon } from '@heroicons/react/24/outline'
+import { ArrowPathIcon, ChatBubbleOvalLeftIcon, EllipsisHorizontalIcon, FaceSmileIcon, HandThumbDownIcon, ShareIcon } from '@heroicons/react/24/outline'
 import FavoriteButton from './components/FavoriteButton'
 import { useState } from 'react'
 import { useAuth } from '../../../utils/hooks/useAuth'
 import ViewComments from './components/ViewComments';
 import Link from 'next/link'
+import NextjsImage from '../../components/ui/image/NextjsImage'
 
 
 const Answer = ({ answer }: { answer: FetchAnswerType }) => {
@@ -15,8 +16,7 @@ const Answer = ({ answer }: { answer: FetchAnswerType }) => {
     return (
         <div className="flex flex-col">
             <div className="flex flex-row  p-4 w-full">
-            <Image src={answer.author.image as string} width={70} height={70} alt={answer.author.name as string} className="h-[35px] w-[35px] rounded-full bg-shadow" />
-
+                <NextjsImage src={answer.author.image as string} w={70} h={70} alt={answer.author.name as string} style="h-[35px] w-[35px] rounded-full bg-shadow" />
                 <div className="flex flex-col justify-center items-start space-y-2 w-[90%]">
                 <div className="flex flex-row items-center  justify-between space-x-2 w-full">
                     <Link href={`/user/${answer.author.id}`} className="flex flex-row items-center space-x-3">

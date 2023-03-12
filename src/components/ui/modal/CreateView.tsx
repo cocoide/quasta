@@ -3,7 +3,7 @@ import { XMarkIcon, PlusCircleIcon } from '@heroicons/react/24/outline';
 import { ChangeEvent, RefObject } from 'react';
 import { ReactNode } from 'react';
 
-type ModalView = {
+interface ModalViewProps {
     closeFunction: () => void
     postFunction: () => void
     handleChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
@@ -14,7 +14,7 @@ type ModalView = {
     textAreaRef?: RefObject<HTMLTextAreaElement>
     children?: ReactNode
 }
-const CreateView = ({ closeFunction, postFunction, handleChange, isModalOpen, children, postAction, placeholder, inputText, textAreaRef }: ModalView) => {
+const CreateView = ({ closeFunction, postFunction, handleChange, isModalOpen, children, postAction, placeholder, inputText, textAreaRef }: ModalViewProps) => {
 
     return (
         <>

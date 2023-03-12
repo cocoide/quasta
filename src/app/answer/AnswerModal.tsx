@@ -9,9 +9,9 @@ import { v4 as uuidv4 } from "uuid";
 import { useAuth } from '../../../utils/hooks/useAuth';
 import { supabase } from '../../libs/supabase';
 import { useForm } from 'react-hook-form';
-import RenderImage from '../../components/ui/image/RenderImage';
 import { CameraIcon, PhotoIcon } from '@heroicons/react/24/outline';
 import axios from 'axios';
+import NextjsImage from '../../components/ui/image/NextjsImage';
 
 const accept = '.png, .jpg, .jpeg, .gif'
 
@@ -87,8 +87,7 @@ const AnswerModal = () => {
                 <label className="w-full p-3">
 
                     {imagePath != undefined ?
-                        <RenderImage src={imagePath as string} alt={answerText}
-                            style={"h-[200px] w-auto mx-auto mb-3"} />
+                        <NextjsImage src={imagePath} alt={answerText} w={0} h={0} style={"h-[200px] w-auto mx-auto mb-3"} />
                         :
                         <CameraIcon className="h-5 w-5 text-primary mr-auto "></CameraIcon>
                     }

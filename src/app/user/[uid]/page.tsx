@@ -2,7 +2,7 @@ import TopBackNavi from '../../../components/ui/TopBackNavi'
 import { db } from '../../../libs/prisma'
 import Image from 'next/image';
 import Link from 'next/link'
-import { BriefcaseIcon } from '@heroicons/react/24/outline';
+import { BriefcaseIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 import FollowButton from './FollowButton';
 
 export const revalidate = 300
@@ -41,9 +41,9 @@ const page = async ({ params }: { params: { uid: string } }) => {
             ring-4 ring-white" />
             </div>
             <div className="w-full flex flex-col  p-5 ">
-
-
+            <div className="w-auto flex flex-row  items-center ml-auto">
                 <FollowButton uid={uid} />
+                </div>
 
                 <div className="w-full flex flex-row  space-x-3 items-center mt-[10px]">
                     <h3 className="">{user?.name}</h3>
