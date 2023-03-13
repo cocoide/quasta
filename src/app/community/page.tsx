@@ -1,21 +1,19 @@
 import LaunchCommunity from './LaunchCommunity';
-
-import { API_URL } from '../../libs/consts';
 import CommunityLists from './CommunityLists';
 
-// async function getCommunity() {
-//     const res = await fetch(`${API_URL}/community`)
-//     return res.json();
-// }
+async function getCommunity() {
+    const res = await fetch(`https://quasta.vercel.app/api//community`, { method: "GET" })
+    return res.json();
+}
 
 const page = async () => {
 
-    // const community = await getCommunity()
+    const community = await getCommunity()
 
     return (
         <div className="">
             <LaunchCommunity />
-            {/* <CommunityLists community={community} /> */}
+            <CommunityLists community={community} />
         </div>
     )
 }
