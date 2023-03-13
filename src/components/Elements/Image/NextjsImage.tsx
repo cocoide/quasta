@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { clsx } from '../../../../utils/clsx'
 
 interface NextjsImageProps {
     src: string | undefined

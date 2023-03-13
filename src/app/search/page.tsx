@@ -1,5 +1,5 @@
 import { db } from '../../libs/prisma';
-import AnswerSuggest from './AnswerSuggest';
+import AnswerSuggest from '../../features/Search/components/AnswerSuggest';
 
 export const dynamic = "force-dynamic";
 

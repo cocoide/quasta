@@ -1,7 +1,7 @@
 "use client"
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { useRefExp } from '../../../utils/hooks/useRegExp';
+import { useRefExp } from '../../../../utils/hooks/useRegExp';
 
 const SuggestedLists = ({
     keyword,

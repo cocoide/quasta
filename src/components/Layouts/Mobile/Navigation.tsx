@@ -3,8 +3,8 @@ import { HomeIcon, PencilIcon, PlusCircleIcon, BellIcon, AcademicCapIcon } from 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { useAuth } from '../../../utils/hooks/useAuth';
-import { loginModalAtom, queryModalAtom } from '../../model/atoms';
+import { useAuth } from '../../../../utils/hooks/useAuth';
+import { loginModalAtom, queryModalAtom } from '../../../model/atoms';
 
 const Navigation = () => {
     const { user } = useAuth()

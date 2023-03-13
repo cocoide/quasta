@@ -1,10 +1,9 @@
 "use client"
 
 import { PencilIcon } from '@heroicons/react/24/outline'
-import { useSession } from 'next-auth/react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
-import { useAuth } from '../../../utils/hooks/useAuth'
-import { answerModalAtom, loginModalAtom, selectQueryAtom } from '../../model/atoms'
+import { useAuth } from '../../../../utils/hooks/useAuth'
+import { answerModalAtom, loginModalAtom, selectQueryAtom } from '../../../model/atoms'
 
 const AnswerButton = ({ query }: { query: string }) => {
 

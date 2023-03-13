@@ -1,6 +1,6 @@
 import { PlusCircleIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
-import NextjsImage from '../../components/ui/image/NextjsImage'
+import NextjsImage from '../../../components/Elements/Image/NextjsImage'
 
 interface CommunityProps {
     id: string

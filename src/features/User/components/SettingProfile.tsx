@@ -4,23 +4,23 @@ import Image from 'next/image';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useSWR from 'swr';
-import { API_URL } from '../../../../libs/consts';
-import { userFetcher } from '../../../../../utils/fetcher';
+import { API_URL } from '../../../libs/consts';
+import { userFetcher } from '../../../../utils/fetcher';
 import axios from 'axios';
 import { v4 as uuidv4 } from "uuid";
-import { supabase } from '../../../../libs/supabase';
-import { useAuth } from '../../../../../utils/hooks/useAuth';
-import NextjsImage from '../../../../components/ui/image/NextjsImage';
+import { supabase } from '../../../libs/supabase';
+import { useAuth } from '../../../../utils/hooks/useAuth';
+import NextjsImage from '../../../components/Elements/Image/NextjsImage';
 
 
 const accept = '.png, .jpg, .jpeg, .gif'
 
-const UserView = () => {
+const SettingProfile = () => {
     const { register, handleSubmit, setValue } = useForm({})
     const { data } = useSWR(`${API_URL}/user`, userFetcher)
     const { user } = useAuth()
     const [imagePath, setImagePath] = useState<string>()
-    
+
     async function handleUploadImage(e: ChangeEvent<HTMLInputElement>) {
         const imageFile = e.target?.files![0]
         uploadStorage(imageFile)
@@ -47,8 +47,8 @@ const UserView = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="p-5 flex flex-col md:flex-row w-full  h-full">
             <div className="mr-5 mb-3 flex-none">
-                    <div>
-                        <label>
+                <div>
+                    <label>
                         {imagePath != undefined ?
                             <NextjsImage src={imagePath} alt={data?.name as string} w={70} h={70} style={"h-[70px] w-[70px] rounded-full bg-shadow"} />
                             :
@@ -57,8 +57,8 @@ const UserView = () => {
                                 className="h-[70px] w-[70px] rounded-full bg-shadow" />
                         }
                         <input type="file" className="sr-only" accept={accept}
-                                onChange={handleUploadImage} />
-                        </label>
+                            onChange={handleUploadImage} />
+                    </label>
                 </div>
             </div>
 
@@ -85,4 +85,4 @@ const UserView = () => {
         </form>
     )
 }
-export default UserView
+export default SettingProfile

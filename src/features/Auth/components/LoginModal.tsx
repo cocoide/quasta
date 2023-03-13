@@ -4,9 +4,9 @@ import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import { useState } from 'react'
 import { useRecoilState } from 'recoil';
-import { clsx } from '../../../utils/clsx';
-import { loginModalAtom } from '../../model/atoms';
-import ThreeDots from '../ui/loading/ThreeDots';
+import { clsx } from '../../../../utils/clsx';
+import { loginModalAtom } from '../../../model/atoms';
+import ThreeDots from '../../../components/Elements/Loading/ThreeDots';
 
 const LoginModal = () => {
     const [isLoading, setIsLoading] = useState(false)

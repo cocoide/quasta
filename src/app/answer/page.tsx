@@ -1,9 +1,14 @@
 import { cache } from 'react'
 import { db } from '../../libs/prisma'
-import AnswerButton from './AnswerButton';
-
+import AnswerButton from '../../features/Answer/components/AnswerButton';
 
 export const revalidate = 300
+
+const fetchQuestions = cache(async () => {
+    return await db.question.findMany({
+        select: { query: true }
+    })
+});
 
 const page = async () => {
     const questions = await fetchQuestions()
@@ -19,9 +24,3 @@ const page = async () => {
     )
 }
 export default page
-
-const fetchQuestions = cache(async () => {
-    return await db.question.findMany({
-        select: { query: true }
-    })
-});

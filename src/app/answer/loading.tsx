@@ -1,4 +1,4 @@
-import GlobalLoading from '../../components/ui/loading/GlobalLoading'
+import GlobalLoading from '../../components/Elements/Loading/GlobalLoading'
 
 const HomeLoading = () => {
     return (

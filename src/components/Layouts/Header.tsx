@@ -6,10 +6,10 @@ import { useAuth } from '../../../utils/hooks/useAuth'
 import Image from 'next/image'
 import { useRecoilState } from 'recoil'
 import { userModalAtom } from '../../model/atoms'
-import SuggestedLists from './SuggestedLists'
 import { API_URL } from '../../libs/consts'
 import { clsx } from '../../../utils/clsx'
 import useScrollPosition from '../../../utils/hooks/browser/useScrollPosition'
+import SuggestedLists from '../../features/Search/components/SuggestedLists'
 
 const Header = () => {
     const [query, setQuery] = useState("")
@@ -25,7 +25,7 @@ const Header = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [isUserModalOpen, setUserModalOpen] = useRecoilState(userModalAtom)
     const { signInWithGoogle, user } = useAuth()
-    
+
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         setQuery(e.target?.value)
     }
@@ -34,10 +34,10 @@ const Header = () => {
         <div className={clsx("sticky top-0 z-30 w-screen")}>
             <div className="flex justify-between items-center py-2 px-5  bg-nothing h-18 border-b border-shadow">
 
-            <Link href="/" className="text-[30px] font-bold text-primary"
+                <Link href="/" className="text-[30px] font-bold text-primary"
                 >Quasta</Link>
 
-            <div className="flex items-center space-x-4 md:space-x-5">
+                <div className="flex items-center space-x-4 md:space-x-5">
 
 
                     {user ?
@@ -69,9 +69,9 @@ const Header = () => {
                         <div className="flex items-center">
 
                             <div className="flex items-center w-[100%] px-2 bg-shadow rounded-md mb-2">
-                        <MagnifyingGlassIcon className="h-5 w-5  text-gray-500" />
+                                <MagnifyingGlassIcon className="h-5 w-5  text-gray-500" />
                                 <input ref={inputRef} onChange={handleChange}
-                            type="search" placeholder="キーワード、#ハッシュタグ" className="bg-shadow w-[100%] p-1 border-transparent focus:ring-0 border-none h-10" />
+                                    type="search" placeholder="キーワード、#ハッシュタグ" className="bg-shadow w-[100%] p-1 border-transparent focus:ring-0 border-none h-10" />
                             </div>
 
                             <button onClick={() => {
@@ -80,7 +80,7 @@ const Header = () => {
                             }} className="flex w-30 pb-2  pl-2 text-sm whitespace-nowrap items-center">キャンセル</button>
                         </div>
 
-                    {
+                        {
                             (query.length == 0) ?
                                 <>
                                     <div className="p-2  hover:bg-neutral duration-100 bg-white">キーワードを入力</div>
@@ -91,7 +91,7 @@ const Header = () => {
                     </div>
                     <button onClick={() => { setMenuOpen(false), setQuery("") }} className="bg-gray-500/30  fixed inset-0 backdrop-blur-sm z-10 animate-appear" ></button>
                 </div>
-            } 
+            }
         </div>
     )
 }

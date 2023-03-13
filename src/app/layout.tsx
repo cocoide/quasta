@@ -1,11 +1,12 @@
 import "styles/globals.css";
-import QueryModal from '../components/features/QueryModal';
-import LoginModal from '../components/layout/LoginModal';
-import Navigation from '../components/layout/Navigation';
-import NextAuthProvider from '../components/layout/providers/NextAuthProvider';
-import { RecoilProvider } from '../components/layout/providers/RecoilProvider';
-import LeftSidevar from './(home)/components/LeftSidevar';
-import RightSidevar from './(home)/components/RightSidevar';
+
+import LoginModal from '../features/Auth/components/LoginModal';
+import Navigation from '../components/Layouts/Mobile/Navigation';
+import NextAuthProvider from '../components/Providers/NextAuthProvider';
+import { RecoilProvider } from '../components/Providers/RecoilProvider';
+import LeftSidevar from '../components/Layouts/Desktop/LeftSidevar';
+import RightSidevar from '../components/Layouts/Desktop/RightSidevar';
+import QuestionModal from '../features/Question/components/QuestionModal';
 
 
 export default function RootLayout({
@@ -25,10 +26,10 @@ export default function RootLayout({
             </div>
             <div className="w-[100%]">{children}</div>
             <RightSidevar />
-          </div>
-          <QueryModal />
+            </div>
+            <QuestionModal />
             <LoginModal />
-          <Navigation />
+            <Navigation /> 
         </RecoilProvider>
         </NextAuthProvider>
       </body>

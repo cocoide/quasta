@@ -1,7 +1,7 @@
 "use client"
+import { useAnswerDataSWR } from '../../../../utils/hooks/useSWR';
+import { FetchAnswerType } from '../../../model/types';
 import Answer from './Answer';
-import { useAnswerDataSWR } from '../../../utils/hooks/useSWR';
-import { FetchAnswerType } from '../../model/types';
 
 
 const AnswerLists = ({ initialData }: { initialData: FetchAnswerType[] }) => {

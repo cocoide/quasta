@@ -1,5 +1,5 @@
-import TopBackNavi from '../../components/ui/TopBackNavi'
-import AnswerModal from './AnswerModal'
+import TopBackNavi from '../../components/Elements/Navigation/TopBackNavi'
+import AnswerModal from '../../features/Answer/components/AnswerModal'
 
 export default function RootLayout({
   children,

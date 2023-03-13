@@ -1,7 +1,7 @@
 "use client"
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import { API_URL } from '../../libs/consts';
+import { API_URL } from '../../../libs/consts';
 
 const LaunchCommunity = () => {
 

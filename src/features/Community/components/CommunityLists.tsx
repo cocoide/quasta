@@ -1,4 +1,4 @@
-import NextjsImage from '../../components/ui/image/NextjsImage'
+import NextjsImage from '../../../components/Elements/Image/NextjsImage'
 
 interface CommunityProps {
     id: string
@@ -6,6 +6,7 @@ interface CommunityProps {
     overview: string
     image: string | undefined
 }
+
 const CommunityLists = ({ community }: { community: CommunityProps[] }) => {
     return (
         <div className="flex flex-col items-center justify-start">

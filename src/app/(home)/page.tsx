@@ -1,7 +1,6 @@
-import Header from '../../components/layout/Header'
-import SuggestFeed from './SuggestFeed'
-import UserModal from '../../components/features/UserModal';
-import AnswerLists from './AnswerLists';
+import Header from '../../components/Layouts/Header'
+import UserModal from '../../components/Layouts/Mobile/RightMenu';
+import AnswerLists from '../../features/Answer/components/AnswerLists';
 import { FetchAnswerType } from '../../model/types';
 
 export const dynamic = "force-dynamic";
@@ -24,7 +23,6 @@ export default async function page() {
             </div>
             <div className="border-x border-shadow">
                 <AnswerLists initialData={anwers} />
-                {/* <SuggestFeed /> */}
         </div>
         </div>
     )

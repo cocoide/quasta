@@ -1,5 +1,5 @@
 import "styles/globals.css";
-import TopBackNavi from '../../components/ui/TopBackNavi';
+import TopBackNavi from '../../components/Elements/Navigation/TopBackNavi';
 
 export default function RootLayout({
   children,

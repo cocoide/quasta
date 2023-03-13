@@ -1,4 +1,4 @@
-import UserView from './UserView';
+import UserView from '../../../../features/Setting/components/SettingProfile';
 
 export const dynamic = "force-dynamic";
 

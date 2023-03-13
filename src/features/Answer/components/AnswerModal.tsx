@@ -1,17 +1,17 @@
 "use client"
-import CreateView from '../../components/ui/modal/CreateView';
+import CreateView from '../../../components/Elements/Modal/CreateView';
 import { useRecoilState } from 'recoil';
-import { answerModalAtom, selectQueryAtom } from '../../model/atoms';
-import { API_URL } from '../../libs/consts';
+import { answerModalAtom, selectQueryAtom } from '../../../model/atoms';
+import { API_URL } from '../../../libs/consts';
 import { ChangeEvent, useRef, useState } from 'react';
-import useAutosizeTextArea from '../../../utils/hooks/useAutosizeTextArea';
+import useAutosizeTextArea from '../../../../utils/hooks/useAutosizeTextArea';
 import { v4 as uuidv4 } from "uuid";
-import { useAuth } from '../../../utils/hooks/useAuth';
-import { supabase } from '../../libs/supabase';
+import { useAuth } from '../../../../utils/hooks/useAuth';
+import { supabase } from '../../../libs/supabase';
 import { useForm } from 'react-hook-form';
-import { CameraIcon, PhotoIcon } from '@heroicons/react/24/outline';
+import { CameraIcon } from '@heroicons/react/24/outline';
 import axios from 'axios';
-import NextjsImage from '../../components/ui/image/NextjsImage';
+import NextjsImage from '../../../components/Elements/Image/NextjsImage';
 
 const accept = '.png, .jpg, .jpeg, .gif'
 

@@ -1,4 +1,4 @@
-import TopBackNavi from '../../../components/ui/TopBackNavi'
+import TopBackNavi from '../../../components/Elements/Navigation/TopBackNavi'
 import { db } from '../../../libs/prisma'
 import Image from 'next/image';
 import Link from 'next/link'
