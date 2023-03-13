@@ -8,6 +8,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Community {
+  id   String    @id @default(cuid())
+  image String?
+  name String @unique
+  overview String?
+  createdAt  DateTime @default(now()) @map(name: "created_at")
+  members User[]
+}
+
 model Comment{
   id   String    @id @default(cuid())
   comment String
@@ -61,6 +70,7 @@ model User {
   favorite_comments Comment[] @relation("FavoriteCommnet")
   followedBy User[] @relation("UserFollows")
   following User[] @relation("UserFollows")
+  community Community[]
   @@map(name: "users")
 }
 

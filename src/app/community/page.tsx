@@ -1,13 +1,24 @@
-import SeminarLists from './SeminarLists'
-import WelcomeSection from './WelcomeSection'
+import LaunchCommunity from './LaunchCommunity';
 
+import { API_URL } from '../../libs/consts';
+import CommunityLists from './CommunityLists';
 
-const page = () => {
+async function getCommunity() {
+    const res = await fetch(`${API_URL}/community`)
+    if (!res.ok) {
+        throw new Error('Failed to fetch data');
+    }
+    return res.json();
+}
+
+const page = async () => {
+
+    const community = await getCommunity()
 
     return (
         <div className="">
-            {/* <WelcomeSection /> */}
-            <SeminarLists />
+            <LaunchCommunity />
+            <CommunityLists community={community} />
         </div>
     )
 }

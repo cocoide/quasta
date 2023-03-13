@@ -12,9 +12,9 @@ const NextjsImage = ({ src, alt, w, h, style }: NextjsImageProps) => {
     return (
         <>
             {src != undefined ?
-        <Image src={src} alt={alt} width={w} height={h} className={clsx(style)} />
+                <Image src={src} alt={alt} width={w} height={h} className={style} />
                 :
-                <div className={clsx(style, "bg-gray-300 animate-pulse")}></div>
+                <Image src="/render.svg" alt={alt} width={w} height={h} className={style} />
             }
         </>
     )

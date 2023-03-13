@@ -24,7 +24,7 @@ export default async function page() {
             </div>
             <div className="border-x border-shadow">
                 <AnswerLists initialData={anwers} />
-                <SuggestFeed />
+                {/* <SuggestFeed /> */}
         </div>
         </div>
     )
