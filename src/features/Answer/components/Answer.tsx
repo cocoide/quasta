@@ -2,10 +2,10 @@
 import Image from 'next/image'
 import { FavoriteUserType, FetchAnswerType, } from '../../../model/types'
 import { ArrowPathIcon, ChatBubbleOvalLeftIcon, EllipsisHorizontalIcon, FaceSmileIcon, HandThumbDownIcon, ShareIcon } from '@heroicons/react/24/outline'
-import FavoriteButton from '../../../app/(home)/components/FavoriteButton'
+import FavoriteButton from './FavoriteButton'
 import { useState } from 'react'
 import { useAuth } from '../../../../utils/hooks/useAuth'
-import ViewComments from '../../../app/(home)/components/ViewComments';
+import ViewComments from './ViewComments';
 import Link from 'next/link'
 import NextjsImage from '../../../components/Elements/Image/NextjsImage'
 

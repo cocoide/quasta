@@ -3,7 +3,7 @@ import { db } from '../../../libs/prisma'
 import Image from 'next/image';
 import Link from 'next/link'
 import { BriefcaseIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
-import FollowButton from './FollowButton';
+import FollowButton from '../../../features/User/components/FollowButton';
 
 export const revalidate = 300
 export const dynamicParams = false
