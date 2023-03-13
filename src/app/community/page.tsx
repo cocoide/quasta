@@ -2,7 +2,7 @@ import LaunchCommunity from './LaunchCommunity';
 import CommunityLists from './CommunityLists';
 
 async function getCommunity() {
-    const res = await fetch(`https://quasta.vercel.app/api//community`, { method: "GET" })
+    const res = await fetch(`https://quasta.vercel.app/api/community`, { method: "GET" })
     return res.json();
 }
 
